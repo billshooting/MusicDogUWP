@@ -1,0 +1,100 @@
+﻿<Page x:ConnectionId='1'
+    x:Class="MusicUWP.ViewPage.SearchSongPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:MusicUWP.ViewPage"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm ="using:MusicUWP.ViewModels"
+    mc:Ignorable="d">
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0" HorizontalAlignment="Stretch">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+            <AutoSuggestBox x:ConnectionId='14' Grid.Column="1"
+                            PlaceholderText="搜索音乐、歌手"
+                            QueryIcon="Find"
+                            Name="AutoSugBox"
+                                                                      
+                            Margin="0,20,0,40"/>
+        </Grid>
+
+        <ListView x:ConnectionId='2' IsItemClickEnabled="True"
+                                                
+                                                  
+                  ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
+                  Grid.Row="1">
+            <ListView.ItemTemplate >
+                <DataTemplate                        >
+                    <Grid x:ConnectionId='7' HorizontalAlignment="Stretch" Height="40" Width="Auto">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="30" />
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="30"/>
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="2.5*" MinWidth="150" />
+                            <ColumnDefinition Width="10"/>
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*" />
+                            <ColumnDefinition Width="10" />
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock x:ConnectionId='8' Grid.Column="0"
+                                                         
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                        <!--用来显示当前播放歌曲的喇叭图标-->
+                        <TextBlock x:ConnectionId='9' Grid.Column="0"
+                                       Text="&#xE15D;"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                                                                                                                  
+                                       Foreground="IndianRed"/>
+                        <TextBlock x:ConnectionId='10' Grid.Column="2"
+                                                                                                                              
+                                       FontFamily="Segoe MDL2 Assets"
+                                                                                                                                          
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                        <TextBlock x:ConnectionId='11' Grid.Column="4"
+                                                            
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                        <TextBlock x:ConnectionId='12' Grid.Column="6"
+                                                             
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                        <TextBlock x:ConnectionId='13' Grid.Column="8"
+                                                            
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+        <ProgressRing x:ConnectionId='3' Name="HttpRequestRing"
+                      Width="50" Height="50"
+                      Grid.Row="1"/>
+        <StackPanel x:ConnectionId='4' Orientation="Horizontal"
+                    Grid.Row="1"
+                    HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Name="ErrorPanel"
+                    Visibility="Collapsed"
+                    >
+            <TextBlock x:ConnectionId='5' Name="ErrorTextBlock"
+                   Visibility="Collapsed"/>
+            <Button x:ConnectionId='6' Name="ErrorComfirmBtn"
+                    Visibility="Collapsed"
+                    Content="确定"
+                                                 />
+        </StackPanel>
+
+    </Grid>
+</Page>
+

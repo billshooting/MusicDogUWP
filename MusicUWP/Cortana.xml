@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoiceCommands xmlns="http://schemas.microsoft.com/voicecommands/1.1">
+  <CommandSet xml:lang="zh-cn" Name="ExampleAppCommandSet_en-us">
+    <CommandPrefix> 在音乐狗中</CommandPrefix>
+    <Example> 搜索爱的供养</Example>
+
+    <Command Name="Search">
+      <Example> 搜索歌曲爱的供养 </Example>
+      <ListenFor> 搜索[歌曲]{song} </ListenFor>
+      <ListenFor> 搜索{song} </ListenFor>
+      <Feedback>正在搜索</Feedback>
+      <Navigate/>
+    </Command>
+
+
+    <PhraseList Label="song">
+      <Item>爱的供养</Item>
+    </PhraseList>
+
+  </CommandSet>
+
+  <!-- Other CommandSets for other languages -->
+
+</VoiceCommands>
