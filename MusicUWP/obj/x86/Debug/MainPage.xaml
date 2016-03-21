@@ -24,50 +24,64 @@
                    Grid.Row="0">
             <!-- 左侧菜单栏-->
             <SplitView.Pane>
-                <ListBox x:ConnectionId='34' Name="LeftDockList" 
+                <RelativePanel Margin="0"
+                               Padding="0"
+                               Background="Transparent">
+                    <ListBox x:ConnectionId='34' Name="LeftDockList" 
                                                                           
                           Background="#FFF0F0F0"
-                          SelectionMode="Single">
-                    <ListBoxItem x:ConnectionId='35' Name="HamburgerButton">
-                        <TextBlock Text="&#xE700;" Style="{StaticResource LetfMenuIconStyle}"/>
-                    </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='36' Name="BandList">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE10F;" Style="{StaticResource LetfMenuIconStyle}"/>
-                            <TextBlock x:ConnectionId='41' Text="榜单排名"  Style="{StaticResource LetfMenuTextStyle}"
-                                       Name="haha"/> 
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='37' Name="Download">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE896;"  Style="{StaticResource LetfMenuIconStyle}"/>
-                            <TextBlock Text="下载管理" Style="{StaticResource LetfMenuTextStyle}"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='38' Name="LocalMusic">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE7F8;"  Style="{StaticResource LetfMenuIconStyle}"/>
-                            <TextBlock Text="本地音乐" Style="{StaticResource LetfMenuTextStyle}"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='39' Name="FavoriteList">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE006;"  Style="{StaticResource LetfMenuIconStyle}"/>
-                            <TextBlock Text="我的最爱" Style="{StaticResource LetfMenuTextStyle}"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                    <ListBoxItem x:ConnectionId='40' Name="SearchMusic">
-                        <StackPanel Orientation="Horizontal">
-                            <TextBlock Text="&#xE721;"  Style="{StaticResource LetfMenuIconStyle}"/>
-                            <TextBlock Text="搜索音乐" Style="{StaticResource LetfMenuTextStyle}"/>
-                        </StackPanel>
-                    </ListBoxItem>
-                </ListBox>
-                                
+                          SelectionMode="Single"
+                          RelativePanel.AlignTopWithPanel="True">
+                        <ListBoxItem x:ConnectionId='35' Name="HamburgerButton">
+                            <TextBlock Text="&#xE700;" Style="{StaticResource LetfMenuIconStyle}"/>
+                        </ListBoxItem>
+                        <ListBoxItem x:ConnectionId='36' Name="BandList">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE10F;" Style="{StaticResource LetfMenuIconStyle}"/>
+                                <TextBlock Text="榜单排名"  Style="{StaticResource LetfMenuTextStyle}"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:ConnectionId='37' Name="Download">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE896;"  Style="{StaticResource LetfMenuIconStyle}"/>
+                                <TextBlock Text="下载管理" Style="{StaticResource LetfMenuTextStyle}"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:ConnectionId='38' Name="LocalMusic">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE7F8;"  Style="{StaticResource LetfMenuIconStyle}"/>
+                                <TextBlock Text="本地音乐" Style="{StaticResource LetfMenuTextStyle}"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:ConnectionId='39' Name="FavoriteList">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE006;"  Style="{StaticResource LetfMenuIconStyle}"/>
+                                <TextBlock Text="我的最爱" Style="{StaticResource LetfMenuTextStyle}"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                        <ListBoxItem x:ConnectionId='40' Name="SearchMusic">
+                            <StackPanel Orientation="Horizontal">
+                                <TextBlock Text="&#xE721;"  Style="{StaticResource LetfMenuIconStyle}"/>
+                                <TextBlock Text="搜索音乐" Style="{StaticResource LetfMenuTextStyle}"/>
+                            </StackPanel>
+                        </ListBoxItem>
+                    </ListBox>
+                    <Button Content="联系作者" 
+                            RelativePanel.AlignBottomWithPanel="True" 
+                            Style="{StaticResource NoMouseOverBtnStyle}" Margin="40,0,0,0"
+                            Background="Transparent"
+                            Foreground="IndianRed">
+                        <Button.Flyout>
+                            <Flyout>
+                                <TextBlock Text="bill_shooting@sina.com"/>
+                            </Flyout>
+                        </Button.Flyout>
+                    </Button>
+                </RelativePanel>
             </SplitView.Pane>
 
             <SplitView.Content>
-                <Frame x:ConnectionId='42' Name="ContentFrame" x:FieldModifier="public" />
+                <Frame x:ConnectionId='41' Name="ContentFrame" x:FieldModifier="public" />
             </SplitView.Content>
         </SplitView>
 

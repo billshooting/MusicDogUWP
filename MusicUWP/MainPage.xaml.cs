@@ -23,6 +23,7 @@ using Windows.UI;
 using Windows.UI.Core;
 using Windows.Storage;
 using Windows.ApplicationModel.VoiceCommands;
+using System.Net.Http;
 
 //“空白页”项模板在 http://go.microsoft.com/fwlink/?LinkId=402352&clcid=0x409 上有介绍
 
@@ -38,6 +39,9 @@ namespace MusicUWP
         public ObservableCollection<Song> FavoriteSongsList { get; set; } = new ObservableCollection<Song>();
         public ObservableCollection<Song> PlayingSongsList { get; set; } = new ObservableCollection<Song>();
         public ObservableCollection<LocalSong> LocalSongsList { get; set; } = new ObservableCollection<LocalSong>();
+        public ObservableCollection<LocalSong> DownloadedSongs { get; set; } = new ObservableCollection<LocalSong>();
+        public StorageFolder DownloadFolder { get; set; } = KnownFolders.MusicLibrary;
+        private List<StorageFile> songFiles = new List<StorageFile>();
          
         private DispatcherTimer _timer; //用于进度条更新的计时器
         public MainPage()
@@ -82,10 +86,6 @@ namespace MusicUWP
         }
 
         #region 功能处理方法
-        public void OnVoiceCmdSearch(string songName)
-        {
-            haha.Text = songName;
-        }
         private void CustomizeTitleBar()
         {
             var view = ApplicationView.GetForCurrentView();
@@ -97,12 +97,17 @@ namespace MusicUWP
             view.TitleBar.ButtonHoverForegroundColor = Colors.White;
             view.TitleBar.ButtonPressedForegroundColor = Colors.Black;
 
-        }
+        } //自定义标题栏
         private void EnableBackButtonOnTitleBar(EventHandler<BackRequestedEventArgs> onBackRequested)
         {
             var currentView = SystemNavigationManager.GetForCurrentView();
             currentView.AppViewBackButtonVisibility = AppViewBackButtonVisibility.Visible;
             currentView.BackRequested += onBackRequested;
+        }
+        private async Task AddDownloadedSong(StorageFile file)
+        {
+            songFiles.Add(file);
+            await SongFileManager.PushFrontSong(DownloadedSongs, file);
         }
         public async Task OpenLocalSongAsync(LocalSong song)
         {
@@ -134,10 +139,17 @@ namespace MusicUWP
             //    await song.SongFile.OpenAsync(Windows.Storage.FileAccessMode.Read),
             //    song.SongFile.ContentType);
         }
+        public void AddToPlayingList(Song song)
+        {
+            if (!PlayingSongsList.Any(s => s.Title == song.Title && s.Artist == song.Artist && s.IsLoaclSong == song.IsLoaclSong))
+            {
+                PlayingSongsList.Add(song);
+            }
+        }
 
         public void Favorite(Song song)
         {
-            if (FavoriteSongsList.Contains(song))
+            if (FavoriteSongsList.Any(s => s.Title == song.Title && s.Artist == song.Artist && s.IsLoaclSong == song.IsLoaclSong))
                 return;
             song.IsFavorite = true;
             FavoriteSongsList.Add(song);
@@ -146,7 +158,7 @@ namespace MusicUWP
         {
             foreach(Song song in songs)
             {
-                if (FavoriteSongsList.Contains(song))
+                if (FavoriteSongsList.Any(s => s.Title == song.Title && s.Artist == song.Artist && s.IsLoaclSong == song.IsLoaclSong))
                     continue;
                 else
                 {
@@ -161,6 +173,44 @@ namespace MusicUWP
             FavoriteSongsList.Remove(song);
         }
 
+        public async Task HandleDownload(string title, string url)
+        {
+            string filename;
+            if (string.IsNullOrEmpty(DownloadFolder.Path))
+                filename = "C:\\Users\\BILL\\Music\\" + title + ".mp3";
+            else
+                filename = DownloadFolder.Path + "\\"+ title + ".mp3";
+            try
+            {
+                await Task.Run(() => WebSongProxy.DownloadSong(url, filename));
+                StorageFile file = await StorageFile.GetFileFromPathAsync(filename);
+                await AddDownloadedSong(file);
+            }
+            catch (HttpRequestException ex)
+            {
+                FileStream fs = new FileStream(".//log.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+                using (StreamWriter sw = new StreamWriter(fs))
+                {
+                    string content = ex.Message;
+                    sw.Write(content + DateTime.Now.ToString());
+                }
+                throw;
+            }
+            //catch (Exception ex)
+            //{
+            //    FileStream fs = new FileStream(".//log.txt", FileMode.OpenOrCreate, FileAccess.ReadWrite);
+            //    using (StreamWriter sw = new StreamWriter(fs))
+            //    {
+            //        string content = ex.Message;
+            //        sw.Write(content + DateTime.Now.ToString());
+            //    }
+            //}
+        }
+        //语音 Todo
+        public void OnVoiceCmdSearch(string tokens)
+        {
+            //TO DO
+        }
         #endregion
 
         //private void BackButton_Click(object sender, RoutedEventArgs e)
@@ -193,7 +243,7 @@ namespace MusicUWP
             if (BandList.IsSelected)
                 ContentFrame.Navigate(typeof(BandCoverPage), this);
             else if (Download.IsSelected)
-                ContentFrame.Navigate(typeof(DownloadPage));
+                ContentFrame.Navigate(typeof(DownloadPage), this);
             else if (LocalMusic.IsSelected)
                 ContentFrame.Navigate(typeof(LocalMusicPage), this);
             else if (FavoriteList.IsSelected)
@@ -307,10 +357,7 @@ namespace MusicUWP
             // ！！！不应该这么做 ， UI的事应该在xaml中完成
             //PlayerBarCover.Source = PlayerBarState.CurrentSong.AlbumCover;
 
-            if (!PlayingSongsList.Any(s=>s==PlayerBarState.CurrentSong))
-            {
-                PlayingSongsList.Add(PlayerBarState.CurrentSong);
-            }
+            AddToPlayingList(PlayerBarState.CurrentSong);
         }
 
         private async void MusicPlayer_MediaEnded(object sender, RoutedEventArgs e)
@@ -418,5 +465,6 @@ namespace MusicUWP
         {
             Favorite(PlayingSongsList);
         }
+
     }
 }

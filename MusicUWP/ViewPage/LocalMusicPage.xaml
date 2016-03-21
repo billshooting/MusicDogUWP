@@ -6,9 +6,25 @@
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
     xmlns:vm ="using:MusicUWP.ViewModels"
+    xmlns:sys ="using:Windows.Storage"
     Loaded="Page_Loaded"
     mc:Ignorable="d">
 
+    <Page.Resources>
+        <Style TargetType="Button" x:Key="AddBtnSytle" BasedOn="{StaticResource NoMouseOverBtnStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="IndianRed"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+        <Style TargetType="Button" x:Key="ConfirmStyle" BasedOn="{StaticResource NoMouseOverBtnStyle}">
+            <Setter Property="Foreground" Value="White" />
+            <Setter Property="Background" Value="SlateBlue"/>
+            <Setter Property="Width" Value="80"/>
+            <Setter Property="BorderThickness" Value="0"/>
+        </Style>
+    </Page.Resources>
+    
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -31,22 +47,58 @@
                       Foreground="Blue" 
                       BorderThickness="0"
                       Background="White"
-                      VerticalAlignment="Center"
-                      Margin="0,5,10,5"/>
+                      VerticalAlignment="Top"
+                      Margin="0,5,0,0">
+                <Button.Flyout>
+                    <Flyout x:Name="AddFodlerFlyout">
+                        <Grid Height="Auto" Width="Auto">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="Auto"/>
+                                <RowDefinition Height="*" />
+                                <RowDefinition Height="Auto" />
+                            </Grid.RowDefinitions>
+
+                            <TextBlock Text="选择本地音乐文件夹" Foreground="DarkGray" FontSize="16"/>
+                            <ListBox Grid.Row="1"
+                                     Name="SelectedFoldersList"
+                                     SelectionMode="Multiple"
+                                     ItemsSource="{x:Bind localFolders}">
+                                <ListBox.ItemTemplate>
+                                    <DataTemplate x:DataType="sys:StorageFolder">
+                                        <TextBlock Text="{x:Bind Path, Mode=OneWay, Converter={StaticResource FolderToStringConverter}}"/>
+                                    </DataTemplate>
+                                </ListBox.ItemTemplate>
+                            </ListBox>
+                            <StackPanel Orientation="Horizontal" 
+                                        Grid.Row="3"
+                                        Height="Auto"
+                                        Width="Auto"
+                                        Margin="0,10,0,0"
+                                        HorizontalAlignment="Center">
+                                <Button Name="AddFolder" Click="AddFolder_Click" Content="添加目录" Margin="0,0,5,0" Style="{StaticResource AddBtnSytle}"/>
+                                <Button Name="DeleteFolder" Click="DeleteFolder_Click" Content="删除目录" Margin="5,0,5,0" Style="{StaticResource AddBtnSytle}"/>
+                                <Button Name="Confirm" Click="Confirm_Click" Content="确定" Margin="5,0,0,0" Style="{StaticResource ConfirmStyle}"/>
+                            </StackPanel>
+                        </Grid>
+                    </Flyout>
+                </Button.Flyout>
+            </Button>
         </RelativePanel>
 
         <ScrollViewer Grid.Row="1">
             <ListView 
                   Name="LocalMusicListView"
-                  IsItemClickEnabled="True"
-                  ItemClick="LocalMusicListView_ItemClick"
+                  IsItemClickEnabled="False"
+                  DoubleTapped="LocalMusicListView_DoubleTapped"
+                  Tapped="LocalMusicListView_Tapped"
+                  IsDoubleTapEnabled="True"
                   VerticalAlignment="Stretch"
                   HorizontalAlignment="Stretch"
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   ItemsSource="{x:Bind localSongs}">
                 <ListView.ItemTemplate >
                     <DataTemplate x:DataType="vm:Song">
-                        <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto">
+                        <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto" IsDoubleTapEnabled="True" DoubleTapped="Grid_DoubleTapped">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30" />
                                 <ColumnDefinition Width="10"/>
@@ -63,31 +115,63 @@
                             <TextBlock Grid.Column="0"
                                        Text="{x:Bind Id}"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"
-                                       Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IdConverter}}"/>
+                                       Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IdConverter}}"
+                                       IsDoubleTapEnabled="False"/>
                             <!--用来显示当前播放歌曲的喇叭图标-->
                             <TextBlock Grid.Column="0"
                                        Text="&#xE15D;"
                                        FontFamily="Segoe MDL2 Assets"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"
                                        Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IsPlayingConverter}}"
+                                       IsDoubleTapEnabled="False"
                                        Foreground="IndianRed"/>
                             <TextBlock Grid.Column="2"
+                                       Name="IsFavoriteBtn"
                                        Text="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnIconConverter}}"
                                        FontFamily="Segoe MDL2 Assets"
                                        Foreground="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnForegroundConverter}}"
-                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
-                            <TextBlock Grid.Column="4"
+                                       PointerPressed="IsFavoriteBtn_PointerPressed"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       IsTapEnabled="False"
+                                       IsDoubleTapEnabled="False"/>
+                            <RelativePanel Margin="0" 
+                                           Padding="0"
+                                           Grid.Column="4"
+                                           VerticalAlignment="Stretch">
+                                <TextBlock RelativePanel.AlignLeftWithPanel="True"
                                        Text="{x:Bind Title}"
-                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                                <Button RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Visibility="Collapsed"
+                                        Content="&#xE7E7;"
+                                        Background="Transparent"
+                                        Style="{StaticResource AdditonalControlButtonStyle}"
+                                        ToolTipService.ToolTip="更多选择"
+                                        IsDoubleTapEnabled="False">
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Text="立即播放" Name="PlayMenu" Click="PlayMenu_Click"/>
+                                            <MenuFlyoutItem Text="收藏" Name="FavMenu" Click="FavMenu_Click" />
+                                            <MenuFlyoutItem Text="添加到播放列表" Name="AddPlayListMenu" Click="AddPlayListMenu_Click"/>
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </RelativePanel>
                             <TextBlock Grid.Column="6"
                                        Text="{x:Bind Artist}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                             <TextBlock Grid.Column="8"
                                        Text="{x:Bind Album}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                             <TextBlock Grid.Column="10"
                                        Text="{x:Bind Duration, Converter={StaticResource TimeSpanConverter}}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                         </Grid>
                     </DataTemplate>
                 </ListView.ItemTemplate>

@@ -132,7 +132,7 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
 
         private void InitTypeTables()
         {
-            _typeNameTable = new string[46];
+            _typeNameTable = new string[48];
             _typeNameTable[0] = "MusicUWP.Converter.VolumeStringConverter";
             _typeNameTable[1] = "Object";
             _typeNameTable[2] = "MusicUWP.Converter.TimeSpanStringConverter";
@@ -151,36 +151,38 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
             _typeNameTable[15] = "MusicUWP.Converter.BoolVisibilityConverter";
             _typeNameTable[16] = "MusicUWP.Converter.BoolVisibilityReverser";
             _typeNameTable[17] = "MusicUWP.Converter.DurationPlayerBarConverter";
-            _typeNameTable[18] = "MusicUWP.MainPage";
-            _typeNameTable[19] = "Windows.UI.Xaml.Controls.Page";
-            _typeNameTable[20] = "Windows.UI.Xaml.Controls.UserControl";
-            _typeNameTable[21] = "MusicUWP.ViewModels.PlayerBarViewModel";
-            _typeNameTable[22] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.Song>";
-            _typeNameTable[23] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.Song>";
-            _typeNameTable[24] = "MusicUWP.ViewModels.Song";
-            _typeNameTable[25] = "Int32";
-            _typeNameTable[26] = "String";
-            _typeNameTable[27] = "TimeSpan";
-            _typeNameTable[28] = "System.ValueType";
-            _typeNameTable[29] = "Boolean";
-            _typeNameTable[30] = "Windows.UI.Xaml.Media.Imaging.BitmapImage";
-            _typeNameTable[31] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>";
-            _typeNameTable[32] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.LocalSong>";
-            _typeNameTable[33] = "MusicUWP.ViewModels.LocalSong";
-            _typeNameTable[34] = "Windows.Storage.StorageFile";
-            _typeNameTable[35] = "MusicUWP.ViewPage.BandCoverPage";
-            _typeNameTable[36] = "MusicUWP.Models.SongResponseBandList";
-            _typeNameTable[37] = "MusicUWP.ViewPage.BandListPage";
-            _typeNameTable[38] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>";
-            _typeNameTable[39] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.WebSong>";
-            _typeNameTable[40] = "MusicUWP.ViewModels.WebSong";
-            _typeNameTable[41] = "MusicUWP.ViewPage.DownloadPage";
-            _typeNameTable[42] = "MusicUWP.ViewPage.FavoriteListPage";
-            _typeNameTable[43] = "MusicUWP.ViewPage.LocalMusicPage";
-            _typeNameTable[44] = "MusicUWP.ViewPage.MusicListBar";
-            _typeNameTable[45] = "MusicUWP.ViewPage.SearchSongPage";
+            _typeNameTable[18] = "MusicUWP.Converter.FolderToString";
+            _typeNameTable[19] = "MusicUWP.MainPage";
+            _typeNameTable[20] = "Windows.UI.Xaml.Controls.Page";
+            _typeNameTable[21] = "Windows.UI.Xaml.Controls.UserControl";
+            _typeNameTable[22] = "MusicUWP.ViewModels.PlayerBarViewModel";
+            _typeNameTable[23] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.Song>";
+            _typeNameTable[24] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.Song>";
+            _typeNameTable[25] = "MusicUWP.ViewModels.Song";
+            _typeNameTable[26] = "Int32";
+            _typeNameTable[27] = "String";
+            _typeNameTable[28] = "TimeSpan";
+            _typeNameTable[29] = "System.ValueType";
+            _typeNameTable[30] = "Boolean";
+            _typeNameTable[31] = "Windows.UI.Xaml.Media.Imaging.BitmapImage";
+            _typeNameTable[32] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>";
+            _typeNameTable[33] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.LocalSong>";
+            _typeNameTable[34] = "MusicUWP.ViewModels.LocalSong";
+            _typeNameTable[35] = "Windows.Storage.StorageFile";
+            _typeNameTable[36] = "Windows.Storage.StorageFolder";
+            _typeNameTable[37] = "MusicUWP.ViewPage.BandCoverPage";
+            _typeNameTable[38] = "MusicUWP.Models.SongResponseBandList";
+            _typeNameTable[39] = "MusicUWP.ViewPage.BandListPage";
+            _typeNameTable[40] = "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>";
+            _typeNameTable[41] = "System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.WebSong>";
+            _typeNameTable[42] = "MusicUWP.ViewModels.WebSong";
+            _typeNameTable[43] = "MusicUWP.ViewPage.DownloadPage";
+            _typeNameTable[44] = "MusicUWP.ViewPage.FavoriteListPage";
+            _typeNameTable[45] = "MusicUWP.ViewPage.LocalMusicPage";
+            _typeNameTable[46] = "MusicUWP.ViewPage.MusicListBar";
+            _typeNameTable[47] = "MusicUWP.ViewPage.SearchSongPage";
 
-            _typeTable = new global::System.Type[46];
+            _typeTable = new global::System.Type[48];
             _typeTable[0] = typeof(global::MusicUWP.Converter.VolumeStringConverter);
             _typeTable[1] = typeof(global::System.Object);
             _typeTable[2] = typeof(global::MusicUWP.Converter.TimeSpanStringConverter);
@@ -199,34 +201,36 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
             _typeTable[15] = typeof(global::MusicUWP.Converter.BoolVisibilityConverter);
             _typeTable[16] = typeof(global::MusicUWP.Converter.BoolVisibilityReverser);
             _typeTable[17] = typeof(global::MusicUWP.Converter.DurationPlayerBarConverter);
-            _typeTable[18] = typeof(global::MusicUWP.MainPage);
-            _typeTable[19] = typeof(global::Windows.UI.Xaml.Controls.Page);
-            _typeTable[20] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
-            _typeTable[21] = typeof(global::MusicUWP.ViewModels.PlayerBarViewModel);
-            _typeTable[22] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.Song>);
-            _typeTable[23] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.Song>);
-            _typeTable[24] = typeof(global::MusicUWP.ViewModels.Song);
-            _typeTable[25] = typeof(global::System.Int32);
-            _typeTable[26] = typeof(global::System.String);
-            _typeTable[27] = typeof(global::System.TimeSpan);
-            _typeTable[28] = typeof(global::System.ValueType);
-            _typeTable[29] = typeof(global::System.Boolean);
-            _typeTable[30] = typeof(global::Windows.UI.Xaml.Media.Imaging.BitmapImage);
-            _typeTable[31] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>);
-            _typeTable[32] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.LocalSong>);
-            _typeTable[33] = typeof(global::MusicUWP.ViewModels.LocalSong);
-            _typeTable[34] = typeof(global::Windows.Storage.StorageFile);
-            _typeTable[35] = typeof(global::MusicUWP.ViewPage.BandCoverPage);
-            _typeTable[36] = typeof(global::MusicUWP.Models.SongResponseBandList);
-            _typeTable[37] = typeof(global::MusicUWP.ViewPage.BandListPage);
-            _typeTable[38] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>);
-            _typeTable[39] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.WebSong>);
-            _typeTable[40] = typeof(global::MusicUWP.ViewModels.WebSong);
-            _typeTable[41] = typeof(global::MusicUWP.ViewPage.DownloadPage);
-            _typeTable[42] = typeof(global::MusicUWP.ViewPage.FavoriteListPage);
-            _typeTable[43] = typeof(global::MusicUWP.ViewPage.LocalMusicPage);
-            _typeTable[44] = typeof(global::MusicUWP.ViewPage.MusicListBar);
-            _typeTable[45] = typeof(global::MusicUWP.ViewPage.SearchSongPage);
+            _typeTable[18] = typeof(global::MusicUWP.Converter.FolderToString);
+            _typeTable[19] = typeof(global::MusicUWP.MainPage);
+            _typeTable[20] = typeof(global::Windows.UI.Xaml.Controls.Page);
+            _typeTable[21] = typeof(global::Windows.UI.Xaml.Controls.UserControl);
+            _typeTable[22] = typeof(global::MusicUWP.ViewModels.PlayerBarViewModel);
+            _typeTable[23] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.Song>);
+            _typeTable[24] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.Song>);
+            _typeTable[25] = typeof(global::MusicUWP.ViewModels.Song);
+            _typeTable[26] = typeof(global::System.Int32);
+            _typeTable[27] = typeof(global::System.String);
+            _typeTable[28] = typeof(global::System.TimeSpan);
+            _typeTable[29] = typeof(global::System.ValueType);
+            _typeTable[30] = typeof(global::System.Boolean);
+            _typeTable[31] = typeof(global::Windows.UI.Xaml.Media.Imaging.BitmapImage);
+            _typeTable[32] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>);
+            _typeTable[33] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.LocalSong>);
+            _typeTable[34] = typeof(global::MusicUWP.ViewModels.LocalSong);
+            _typeTable[35] = typeof(global::Windows.Storage.StorageFile);
+            _typeTable[36] = typeof(global::Windows.Storage.StorageFolder);
+            _typeTable[37] = typeof(global::MusicUWP.ViewPage.BandCoverPage);
+            _typeTable[38] = typeof(global::MusicUWP.Models.SongResponseBandList);
+            _typeTable[39] = typeof(global::MusicUWP.ViewPage.BandListPage);
+            _typeTable[40] = typeof(global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>);
+            _typeTable[41] = typeof(global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.WebSong>);
+            _typeTable[42] = typeof(global::MusicUWP.ViewModels.WebSong);
+            _typeTable[43] = typeof(global::MusicUWP.ViewPage.DownloadPage);
+            _typeTable[44] = typeof(global::MusicUWP.ViewPage.FavoriteListPage);
+            _typeTable[45] = typeof(global::MusicUWP.ViewPage.LocalMusicPage);
+            _typeTable[46] = typeof(global::MusicUWP.ViewPage.MusicListBar);
+            _typeTable[47] = typeof(global::MusicUWP.ViewPage.SearchSongPage);
         }
 
         private int LookupTypeIndexByName(string typeName)
@@ -277,56 +281,57 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
         private object Activate_15_BoolVisibilityConverter() { return new global::MusicUWP.Converter.BoolVisibilityConverter(); }
         private object Activate_16_BoolVisibilityReverser() { return new global::MusicUWP.Converter.BoolVisibilityReverser(); }
         private object Activate_17_DurationPlayerBarConverter() { return new global::MusicUWP.Converter.DurationPlayerBarConverter(); }
-        private object Activate_18_MainPage() { return new global::MusicUWP.MainPage(); }
-        private object Activate_21_PlayerBarViewModel() { return new global::MusicUWP.ViewModels.PlayerBarViewModel(); }
-        private object Activate_22_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.Song>(); }
-        private object Activate_23_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.Song>(); }
-        private object Activate_24_Song() { return new global::MusicUWP.ViewModels.Song(); }
-        private object Activate_31_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>(); }
-        private object Activate_32_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.LocalSong>(); }
-        private object Activate_33_LocalSong() { return new global::MusicUWP.ViewModels.LocalSong(); }
-        private object Activate_35_BandCoverPage() { return new global::MusicUWP.ViewPage.BandCoverPage(); }
-        private object Activate_36_SongResponseBandList() { return new global::MusicUWP.Models.SongResponseBandList(); }
-        private object Activate_37_BandListPage() { return new global::MusicUWP.ViewPage.BandListPage(); }
-        private object Activate_38_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>(); }
-        private object Activate_39_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.WebSong>(); }
-        private object Activate_40_WebSong() { return new global::MusicUWP.ViewModels.WebSong(); }
-        private object Activate_41_DownloadPage() { return new global::MusicUWP.ViewPage.DownloadPage(); }
-        private object Activate_42_FavoriteListPage() { return new global::MusicUWP.ViewPage.FavoriteListPage(); }
-        private object Activate_43_LocalMusicPage() { return new global::MusicUWP.ViewPage.LocalMusicPage(); }
-        private object Activate_44_MusicListBar() { return new global::MusicUWP.ViewPage.MusicListBar(); }
-        private object Activate_45_SearchSongPage() { return new global::MusicUWP.ViewPage.SearchSongPage(); }
-        private void VectorAdd_22_ObservableCollection(object instance, object item)
+        private object Activate_18_FolderToString() { return new global::MusicUWP.Converter.FolderToString(); }
+        private object Activate_19_MainPage() { return new global::MusicUWP.MainPage(); }
+        private object Activate_22_PlayerBarViewModel() { return new global::MusicUWP.ViewModels.PlayerBarViewModel(); }
+        private object Activate_23_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.Song>(); }
+        private object Activate_24_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.Song>(); }
+        private object Activate_25_Song() { return new global::MusicUWP.ViewModels.Song(); }
+        private object Activate_32_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>(); }
+        private object Activate_33_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.LocalSong>(); }
+        private object Activate_34_LocalSong() { return new global::MusicUWP.ViewModels.LocalSong(); }
+        private object Activate_37_BandCoverPage() { return new global::MusicUWP.ViewPage.BandCoverPage(); }
+        private object Activate_38_SongResponseBandList() { return new global::MusicUWP.Models.SongResponseBandList(); }
+        private object Activate_39_BandListPage() { return new global::MusicUWP.ViewPage.BandListPage(); }
+        private object Activate_40_ObservableCollection() { return new global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>(); }
+        private object Activate_41_Collection() { return new global::System.Collections.ObjectModel.Collection<global::MusicUWP.ViewModels.WebSong>(); }
+        private object Activate_42_WebSong() { return new global::MusicUWP.ViewModels.WebSong(); }
+        private object Activate_43_DownloadPage() { return new global::MusicUWP.ViewPage.DownloadPage(); }
+        private object Activate_44_FavoriteListPage() { return new global::MusicUWP.ViewPage.FavoriteListPage(); }
+        private object Activate_45_LocalMusicPage() { return new global::MusicUWP.ViewPage.LocalMusicPage(); }
+        private object Activate_46_MusicListBar() { return new global::MusicUWP.ViewPage.MusicListBar(); }
+        private object Activate_47_SearchSongPage() { return new global::MusicUWP.ViewPage.SearchSongPage(); }
+        private void VectorAdd_23_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.Song>)instance;
             var newItem = (global::MusicUWP.ViewModels.Song)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_23_Collection(object instance, object item)
+        private void VectorAdd_24_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.Song>)instance;
             var newItem = (global::MusicUWP.ViewModels.Song)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_31_ObservableCollection(object instance, object item)
+        private void VectorAdd_32_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.LocalSong>)instance;
             var newItem = (global::MusicUWP.ViewModels.LocalSong)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_32_Collection(object instance, object item)
+        private void VectorAdd_33_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.LocalSong>)instance;
             var newItem = (global::MusicUWP.ViewModels.LocalSong)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_38_ObservableCollection(object instance, object item)
+        private void VectorAdd_40_ObservableCollection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.WebSong>)instance;
             var newItem = (global::MusicUWP.ViewModels.WebSong)item;
             collection.Add(newItem);
         }
-        private void VectorAdd_39_Collection(object instance, object item)
+        private void VectorAdd_41_Collection(object instance, object item)
         {
             var collection = (global::System.Collections.Generic.ICollection<global::MusicUWP.ViewModels.WebSong>)instance;
             var newItem = (global::MusicUWP.ViewModels.WebSong)item;
@@ -463,49 +468,58 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 18:   //  MusicUWP.MainPage
+            case 18:   //  MusicUWP.Converter.FolderToString
+                userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.Activator = Activate_18_FolderToString;
+                userType.SetIsLocalType();
+                xamlType = userType;
+                break;
+
+            case 19:   //  MusicUWP.MainPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_18_MainPage;
+                userType.Activator = Activate_19_MainPage;
                 userType.AddMemberName("PlayerBarState");
                 userType.AddMemberName("FavoriteSongsList");
                 userType.AddMemberName("PlayingSongsList");
                 userType.AddMemberName("LocalSongsList");
+                userType.AddMemberName("DownloadedSongs");
+                userType.AddMemberName("DownloadFolder");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 19:   //  Windows.UI.Xaml.Controls.Page
+            case 20:   //  Windows.UI.Xaml.Controls.Page
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 20:   //  Windows.UI.Xaml.Controls.UserControl
+            case 21:   //  Windows.UI.Xaml.Controls.UserControl
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 21:   //  MusicUWP.ViewModels.PlayerBarViewModel
+            case 22:   //  MusicUWP.ViewModels.PlayerBarViewModel
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 22:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.Song>
+            case 23:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.Song>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.Song>"));
-                userType.CollectionAdd = VectorAdd_22_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_23_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 23:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.Song>
+            case 24:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.Song>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_23_Collection;
-                userType.CollectionAdd = VectorAdd_23_Collection;
+                userType.Activator = Activate_24_Collection;
+                userType.CollectionAdd = VectorAdd_24_Collection;
                 xamlType = userType;
                 break;
 
-            case 24:   //  MusicUWP.ViewModels.Song
+            case 25:   //  MusicUWP.ViewModels.Song
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_24_Song;
+                userType.Activator = Activate_25_Song;
                 userType.AddMemberName("Id");
                 userType.AddMemberName("Title");
                 userType.AddMemberName("Artist");
@@ -519,101 +533,107 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 25:   //  Int32
+            case 26:   //  Int32
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 26:   //  String
+            case 27:   //  String
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 27:   //  TimeSpan
+            case 28:   //  TimeSpan
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.ValueType"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 28:   //  System.ValueType
+            case 29:   //  System.ValueType
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 xamlType = userType;
                 break;
 
-            case 29:   //  Boolean
+            case 30:   //  Boolean
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 30:   //  Windows.UI.Xaml.Media.Imaging.BitmapImage
+            case 31:   //  Windows.UI.Xaml.Media.Imaging.BitmapImage
                 xamlType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlSystemBaseType(typeName, type);
                 break;
 
-            case 31:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>
+            case 32:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.LocalSong>"));
-                userType.CollectionAdd = VectorAdd_31_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_32_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 32:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.LocalSong>
+            case 33:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.LocalSong>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_32_Collection;
-                userType.CollectionAdd = VectorAdd_32_Collection;
+                userType.Activator = Activate_33_Collection;
+                userType.CollectionAdd = VectorAdd_33_Collection;
                 xamlType = userType;
                 break;
 
-            case 33:   //  MusicUWP.ViewModels.LocalSong
+            case 34:   //  MusicUWP.ViewModels.LocalSong
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("MusicUWP.ViewModels.Song"));
-                userType.Activator = Activate_33_LocalSong;
+                userType.Activator = Activate_34_LocalSong;
                 userType.AddMemberName("SongFile");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 34:   //  Windows.Storage.StorageFile
+            case 35:   //  Windows.Storage.StorageFile
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 35:   //  MusicUWP.ViewPage.BandCoverPage
+            case 36:   //  Windows.Storage.StorageFolder
+                userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
+                userType.SetIsReturnTypeStub();
+                xamlType = userType;
+                break;
+
+            case 37:   //  MusicUWP.ViewPage.BandCoverPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_35_BandCoverPage;
+                userType.Activator = Activate_37_BandCoverPage;
                 userType.AddMemberName("TopList");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 36:   //  MusicUWP.Models.SongResponseBandList
+            case 38:   //  MusicUWP.Models.SongResponseBandList
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
                 userType.SetIsReturnTypeStub();
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 37:   //  MusicUWP.ViewPage.BandListPage
+            case 39:   //  MusicUWP.ViewPage.BandListPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_37_BandListPage;
+                userType.Activator = Activate_39_BandListPage;
                 userType.AddMemberName("WebSongsList");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 38:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>
+            case 40:   //  System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.WebSong>"));
-                userType.CollectionAdd = VectorAdd_38_ObservableCollection;
+                userType.CollectionAdd = VectorAdd_40_ObservableCollection;
                 userType.SetIsReturnTypeStub();
                 xamlType = userType;
                 break;
 
-            case 39:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.WebSong>
+            case 41:   //  System.Collections.ObjectModel.Collection`1<MusicUWP.ViewModels.WebSong>
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Object"));
-                userType.Activator = Activate_39_Collection;
-                userType.CollectionAdd = VectorAdd_39_Collection;
+                userType.Activator = Activate_41_Collection;
+                userType.CollectionAdd = VectorAdd_41_Collection;
                 xamlType = userType;
                 break;
 
-            case 40:   //  MusicUWP.ViewModels.WebSong
+            case 42:   //  MusicUWP.ViewModels.WebSong
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("MusicUWP.ViewModels.Song"));
-                userType.Activator = Activate_40_WebSong;
+                userType.Activator = Activate_42_WebSong;
                 userType.AddMemberName("Albumid");
                 userType.AddMemberName("Albummid");
                 userType.AddMemberName("Albumpic_big");
@@ -626,39 +646,41 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
                 xamlType = userType;
                 break;
 
-            case 41:   //  MusicUWP.ViewPage.DownloadPage
+            case 43:   //  MusicUWP.ViewPage.DownloadPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_41_DownloadPage;
+                userType.Activator = Activate_43_DownloadPage;
+                userType.AddMemberName("StorageFolder");
+                userType.AddMemberName("DownloadedSongs");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 42:   //  MusicUWP.ViewPage.FavoriteListPage
+            case 44:   //  MusicUWP.ViewPage.FavoriteListPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_42_FavoriteListPage;
+                userType.Activator = Activate_44_FavoriteListPage;
                 userType.AddMemberName("FavoriteSongs");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 43:   //  MusicUWP.ViewPage.LocalMusicPage
+            case 45:   //  MusicUWP.ViewPage.LocalMusicPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_43_LocalMusicPage;
+                userType.Activator = Activate_45_LocalMusicPage;
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 44:   //  MusicUWP.ViewPage.MusicListBar
+            case 46:   //  MusicUWP.ViewPage.MusicListBar
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.UserControl"));
-                userType.Activator = Activate_44_MusicListBar;
+                userType.Activator = Activate_46_MusicListBar;
                 userType.AddMemberName("Song");
                 userType.SetIsLocalType();
                 xamlType = userType;
                 break;
 
-            case 45:   //  MusicUWP.ViewPage.SearchSongPage
+            case 47:   //  MusicUWP.ViewPage.SearchSongPage
                 userType = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType(this, typeName, type, GetXamlTypeByName("Windows.UI.Xaml.Controls.Page"));
-                userType.Activator = Activate_45_SearchSongPage;
+                userType.Activator = Activate_47_SearchSongPage;
                 userType.AddMemberName("QueryList");
                 userType.SetIsLocalType();
                 xamlType = userType;
@@ -808,127 +830,167 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
             var that = (global::MusicUWP.ViewModels.LocalSong)instance;
             that.SongFile = (global::Windows.Storage.StorageFile)Value;
         }
-        private object get_14_BandCoverPage_TopList(object instance)
+        private object get_14_MainPage_DownloadedSongs(object instance)
+        {
+            var that = (global::MusicUWP.MainPage)instance;
+            return that.DownloadedSongs;
+        }
+        private void set_14_MainPage_DownloadedSongs(object instance, object Value)
+        {
+            var that = (global::MusicUWP.MainPage)instance;
+            that.DownloadedSongs = (global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>)Value;
+        }
+        private object get_15_MainPage_DownloadFolder(object instance)
+        {
+            var that = (global::MusicUWP.MainPage)instance;
+            return that.DownloadFolder;
+        }
+        private void set_15_MainPage_DownloadFolder(object instance, object Value)
+        {
+            var that = (global::MusicUWP.MainPage)instance;
+            that.DownloadFolder = (global::Windows.Storage.StorageFolder)Value;
+        }
+        private object get_16_BandCoverPage_TopList(object instance)
         {
             var that = (global::MusicUWP.ViewPage.BandCoverPage)instance;
             return that.TopList;
         }
-        private void set_14_BandCoverPage_TopList(object instance, object Value)
+        private void set_16_BandCoverPage_TopList(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewPage.BandCoverPage)instance;
             that.TopList = (global::MusicUWP.Models.SongResponseBandList)Value;
         }
-        private object get_15_BandListPage_WebSongsList(object instance)
+        private object get_17_BandListPage_WebSongsList(object instance)
         {
             var that = (global::MusicUWP.ViewPage.BandListPage)instance;
             return that.WebSongsList;
         }
-        private void set_15_BandListPage_WebSongsList(object instance, object Value)
+        private void set_17_BandListPage_WebSongsList(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewPage.BandListPage)instance;
             that.WebSongsList = (global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>)Value;
         }
-        private object get_16_WebSong_Albumid(object instance)
+        private object get_18_WebSong_Albumid(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Albumid;
         }
-        private void set_16_WebSong_Albumid(object instance, object Value)
+        private void set_18_WebSong_Albumid(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Albumid = (global::System.Int32)Value;
         }
-        private object get_17_WebSong_Albummid(object instance)
+        private object get_19_WebSong_Albummid(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Albummid;
         }
-        private void set_17_WebSong_Albummid(object instance, object Value)
+        private void set_19_WebSong_Albummid(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Albummid = (global::System.String)Value;
         }
-        private object get_18_WebSong_Albumpic_big(object instance)
+        private object get_20_WebSong_Albumpic_big(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Albumpic_big;
         }
-        private void set_18_WebSong_Albumpic_big(object instance, object Value)
+        private void set_20_WebSong_Albumpic_big(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Albumpic_big = (global::System.String)Value;
         }
-        private object get_19_WebSong_Albumpic_small(object instance)
+        private object get_21_WebSong_Albumpic_small(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Albumpic_small;
         }
-        private void set_19_WebSong_Albumpic_small(object instance, object Value)
+        private void set_21_WebSong_Albumpic_small(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Albumpic_small = (global::System.String)Value;
         }
-        private object get_20_WebSong_DownUrl(object instance)
+        private object get_22_WebSong_DownUrl(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.DownUrl;
         }
-        private void set_20_WebSong_DownUrl(object instance, object Value)
+        private void set_22_WebSong_DownUrl(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.DownUrl = (global::System.String)Value;
         }
-        private object get_21_WebSong_Singerid(object instance)
+        private object get_23_WebSong_Singerid(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Singerid;
         }
-        private void set_21_WebSong_Singerid(object instance, object Value)
+        private void set_23_WebSong_Singerid(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Singerid = (global::System.Int32)Value;
         }
-        private object get_22_WebSong_Songid(object instance)
+        private object get_24_WebSong_Songid(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Songid;
         }
-        private void set_22_WebSong_Songid(object instance, object Value)
+        private void set_24_WebSong_Songid(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Songid = (global::System.Int32)Value;
         }
-        private object get_23_WebSong_Url(object instance)
+        private object get_25_WebSong_Url(object instance)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             return that.Url;
         }
-        private void set_23_WebSong_Url(object instance, object Value)
+        private void set_25_WebSong_Url(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewModels.WebSong)instance;
             that.Url = (global::System.String)Value;
         }
-        private object get_24_FavoriteListPage_FavoriteSongs(object instance)
+        private object get_26_DownloadPage_StorageFolder(object instance)
+        {
+            var that = (global::MusicUWP.ViewPage.DownloadPage)instance;
+            return that.StorageFolder;
+        }
+        private void set_26_DownloadPage_StorageFolder(object instance, object Value)
+        {
+            var that = (global::MusicUWP.ViewPage.DownloadPage)instance;
+            that.StorageFolder = (global::Windows.Storage.StorageFolder)Value;
+        }
+        private object get_27_DownloadPage_DownloadedSongs(object instance)
+        {
+            var that = (global::MusicUWP.ViewPage.DownloadPage)instance;
+            return that.DownloadedSongs;
+        }
+        private void set_27_DownloadPage_DownloadedSongs(object instance, object Value)
+        {
+            var that = (global::MusicUWP.ViewPage.DownloadPage)instance;
+            that.DownloadedSongs = (global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.LocalSong>)Value;
+        }
+        private object get_28_FavoriteListPage_FavoriteSongs(object instance)
         {
             var that = (global::MusicUWP.ViewPage.FavoriteListPage)instance;
             return that.FavoriteSongs;
         }
-        private void set_24_FavoriteListPage_FavoriteSongs(object instance, object Value)
+        private void set_28_FavoriteListPage_FavoriteSongs(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewPage.FavoriteListPage)instance;
             that.FavoriteSongs = (global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.Song>)Value;
         }
-        private object get_25_MusicListBar_Song(object instance)
+        private object get_29_MusicListBar_Song(object instance)
         {
             var that = (global::MusicUWP.ViewPage.MusicListBar)instance;
             return that.Song;
         }
-        private object get_26_SearchSongPage_QueryList(object instance)
+        private object get_30_SearchSongPage_QueryList(object instance)
         {
             var that = (global::MusicUWP.ViewPage.SearchSongPage)instance;
             return that.QueryList;
         }
-        private void set_26_SearchSongPage_QueryList(object instance, object Value)
+        private void set_30_SearchSongPage_QueryList(object instance, object Value)
         {
             var that = (global::MusicUWP.ViewPage.SearchSongPage)instance;
             that.QueryList = (global::System.Collections.ObjectModel.ObservableCollection<global::MusicUWP.ViewModels.WebSong>)Value;
@@ -1025,83 +1087,107 @@ namespace MusicUWP.MusicUWP_XamlTypeInfo
                 xamlMember.Getter = get_13_LocalSong_SongFile;
                 xamlMember.Setter = set_13_LocalSong_SongFile;
                 break;
+            case "MusicUWP.MainPage.DownloadedSongs":
+                userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.MainPage");
+                xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "DownloadedSongs", "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>");
+                xamlMember.Getter = get_14_MainPage_DownloadedSongs;
+                xamlMember.Setter = set_14_MainPage_DownloadedSongs;
+                break;
+            case "MusicUWP.MainPage.DownloadFolder":
+                userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.MainPage");
+                xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "DownloadFolder", "Windows.Storage.StorageFolder");
+                xamlMember.Getter = get_15_MainPage_DownloadFolder;
+                xamlMember.Setter = set_15_MainPage_DownloadFolder;
+                break;
             case "MusicUWP.ViewPage.BandCoverPage.TopList":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.BandCoverPage");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "TopList", "MusicUWP.Models.SongResponseBandList");
-                xamlMember.Getter = get_14_BandCoverPage_TopList;
-                xamlMember.Setter = set_14_BandCoverPage_TopList;
+                xamlMember.Getter = get_16_BandCoverPage_TopList;
+                xamlMember.Setter = set_16_BandCoverPage_TopList;
                 break;
             case "MusicUWP.ViewPage.BandListPage.WebSongsList":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.BandListPage");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "WebSongsList", "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>");
-                xamlMember.Getter = get_15_BandListPage_WebSongsList;
-                xamlMember.Setter = set_15_BandListPage_WebSongsList;
+                xamlMember.Getter = get_17_BandListPage_WebSongsList;
+                xamlMember.Setter = set_17_BandListPage_WebSongsList;
                 break;
             case "MusicUWP.ViewModels.WebSong.Albumid":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Albumid", "Int32");
-                xamlMember.Getter = get_16_WebSong_Albumid;
-                xamlMember.Setter = set_16_WebSong_Albumid;
+                xamlMember.Getter = get_18_WebSong_Albumid;
+                xamlMember.Setter = set_18_WebSong_Albumid;
                 break;
             case "MusicUWP.ViewModels.WebSong.Albummid":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Albummid", "String");
-                xamlMember.Getter = get_17_WebSong_Albummid;
-                xamlMember.Setter = set_17_WebSong_Albummid;
+                xamlMember.Getter = get_19_WebSong_Albummid;
+                xamlMember.Setter = set_19_WebSong_Albummid;
                 break;
             case "MusicUWP.ViewModels.WebSong.Albumpic_big":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Albumpic_big", "String");
-                xamlMember.Getter = get_18_WebSong_Albumpic_big;
-                xamlMember.Setter = set_18_WebSong_Albumpic_big;
+                xamlMember.Getter = get_20_WebSong_Albumpic_big;
+                xamlMember.Setter = set_20_WebSong_Albumpic_big;
                 break;
             case "MusicUWP.ViewModels.WebSong.Albumpic_small":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Albumpic_small", "String");
-                xamlMember.Getter = get_19_WebSong_Albumpic_small;
-                xamlMember.Setter = set_19_WebSong_Albumpic_small;
+                xamlMember.Getter = get_21_WebSong_Albumpic_small;
+                xamlMember.Setter = set_21_WebSong_Albumpic_small;
                 break;
             case "MusicUWP.ViewModels.WebSong.DownUrl":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "DownUrl", "String");
-                xamlMember.Getter = get_20_WebSong_DownUrl;
-                xamlMember.Setter = set_20_WebSong_DownUrl;
+                xamlMember.Getter = get_22_WebSong_DownUrl;
+                xamlMember.Setter = set_22_WebSong_DownUrl;
                 break;
             case "MusicUWP.ViewModels.WebSong.Singerid":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Singerid", "Int32");
-                xamlMember.Getter = get_21_WebSong_Singerid;
-                xamlMember.Setter = set_21_WebSong_Singerid;
+                xamlMember.Getter = get_23_WebSong_Singerid;
+                xamlMember.Setter = set_23_WebSong_Singerid;
                 break;
             case "MusicUWP.ViewModels.WebSong.Songid":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Songid", "Int32");
-                xamlMember.Getter = get_22_WebSong_Songid;
-                xamlMember.Setter = set_22_WebSong_Songid;
+                xamlMember.Getter = get_24_WebSong_Songid;
+                xamlMember.Setter = set_24_WebSong_Songid;
                 break;
             case "MusicUWP.ViewModels.WebSong.Url":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewModels.WebSong");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Url", "String");
-                xamlMember.Getter = get_23_WebSong_Url;
-                xamlMember.Setter = set_23_WebSong_Url;
+                xamlMember.Getter = get_25_WebSong_Url;
+                xamlMember.Setter = set_25_WebSong_Url;
+                break;
+            case "MusicUWP.ViewPage.DownloadPage.StorageFolder":
+                userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.DownloadPage");
+                xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "StorageFolder", "Windows.Storage.StorageFolder");
+                xamlMember.Getter = get_26_DownloadPage_StorageFolder;
+                xamlMember.Setter = set_26_DownloadPage_StorageFolder;
+                break;
+            case "MusicUWP.ViewPage.DownloadPage.DownloadedSongs":
+                userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.DownloadPage");
+                xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "DownloadedSongs", "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.LocalSong>");
+                xamlMember.Getter = get_27_DownloadPage_DownloadedSongs;
+                xamlMember.Setter = set_27_DownloadPage_DownloadedSongs;
                 break;
             case "MusicUWP.ViewPage.FavoriteListPage.FavoriteSongs":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.FavoriteListPage");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "FavoriteSongs", "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.Song>");
-                xamlMember.Getter = get_24_FavoriteListPage_FavoriteSongs;
-                xamlMember.Setter = set_24_FavoriteListPage_FavoriteSongs;
+                xamlMember.Getter = get_28_FavoriteListPage_FavoriteSongs;
+                xamlMember.Setter = set_28_FavoriteListPage_FavoriteSongs;
                 break;
             case "MusicUWP.ViewPage.MusicListBar.Song":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.MusicListBar");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "Song", "MusicUWP.ViewModels.Song");
-                xamlMember.Getter = get_25_MusicListBar_Song;
+                xamlMember.Getter = get_29_MusicListBar_Song;
                 xamlMember.SetIsReadOnly();
                 break;
             case "MusicUWP.ViewPage.SearchSongPage.QueryList":
                 userType = (global::MusicUWP.MusicUWP_XamlTypeInfo.XamlUserType)GetXamlTypeByName("MusicUWP.ViewPage.SearchSongPage");
                 xamlMember = new global::MusicUWP.MusicUWP_XamlTypeInfo.XamlMember(this, "QueryList", "System.Collections.ObjectModel.ObservableCollection`1<MusicUWP.ViewModels.WebSong>");
-                xamlMember.Getter = get_26_SearchSongPage_QueryList;
-                xamlMember.Setter = set_26_SearchSongPage_QueryList;
+                xamlMember.Getter = get_30_SearchSongPage_QueryList;
+                xamlMember.Setter = set_30_SearchSongPage_QueryList;
                 break;
             }
             return xamlMember;

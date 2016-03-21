@@ -10,6 +10,8 @@ using Windows.Storage.Streams;
 using MusicUWP.Models;
 using System.Runtime.Serialization.Json;
 using System.IO;
+using System.Net;
+using Windows.Storage;
 
 namespace MusicUWP.ViewModels
 {
@@ -68,6 +70,25 @@ namespace MusicUWP.ViewModels
             {
                 throw new Exception("网络请求错误" + ex.Message);
             }
+        }
+
+        private static async Task<byte []> DownloadSongStream(string url)
+        { 
+            HttpClient http = new HttpClient();
+            var res = await http.GetAsync(url);
+            var buffer = await res.Content.ReadAsByteArrayAsync();
+            return buffer;
+        }
+
+        public static async Task DownloadSong(string url, string filename)
+        {
+            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
+            BinaryWriter br = new BinaryWriter(fs);
+            byte[] buffer = await DownloadSongStream(url);
+            br.Write(buffer);
+
+            fs.Dispose();
+            br.Dispose();
         }
 
         public static async Task<SongResponseById>GetSongByIdAsync(string songId)

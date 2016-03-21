@@ -19,7 +19,7 @@
                 <ColumnDefinition Width="*" />
                 <ColumnDefinition Width="40"/>
             </Grid.ColumnDefinitions>
-            <AutoSuggestBox x:ConnectionId='14' Grid.Column="1"
+            <AutoSuggestBox x:ConnectionId='18' Grid.Column="1"
                             PlaceholderText="搜索音乐、歌手"
                             QueryIcon="Find"
                             Name="AutoSugBox"
@@ -27,14 +27,15 @@
                             Margin="0,20,0,40"/>
         </Grid>
 
-        <ListView x:ConnectionId='2' IsItemClickEnabled="True"
-                                                
+        <ListView x:ConnectionId='2' IsItemClickEnabled="False"
+                                          
+                                                      
                                                   
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   Grid.Row="1">
             <ListView.ItemTemplate >
                 <DataTemplate                        >
-                    <Grid x:ConnectionId='7' HorizontalAlignment="Stretch" Height="40" Width="Auto">
+                    <Grid x:ConnectionId='7' HorizontalAlignment="Stretch" Height="40" Width="Auto"                                 >
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="10"/>
@@ -50,28 +51,61 @@
                         </Grid.ColumnDefinitions>
                         <TextBlock x:ConnectionId='8' Grid.Column="0"
                                                          
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                                                                                                           
+                                       IsDoubleTapEnabled="False"/>
                         <!--用来显示当前播放歌曲的喇叭图标-->
                         <TextBlock x:ConnectionId='9' Grid.Column="0"
                                        Text="&#xE15D;"
                                        FontFamily="Segoe MDL2 Assets"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"
                                                                                                                                   
+                                       IsDoubleTapEnabled="False"
                                        Foreground="IndianRed"/>
-                        <TextBlock x:ConnectionId='10' Grid.Column="2"
+                        <TextBlock x:ConnectionId='10' Grid.Column="2" Name="IsFavBtn"
                                                                                                                               
                                        FontFamily="Segoe MDL2 Assets"
                                                                                                                                           
+                                       IsTapEnabled="False"
+                                       IsDoubleTapEnabled="False"
+                                                                               
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"/>
-                        <TextBlock x:ConnectionId='11' Grid.Column="4"
+                        <RelativePanel Margin="0" 
+                                       Padding="0"
+                                       Grid.Column="4"
+                                       VerticalAlignment="Stretch">
+                            <TextBlock x:ConnectionId='13' RelativePanel.AlignLeftWithPanel="True"
                                                             
-                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
-                        <TextBlock x:ConnectionId='12' Grid.Column="6"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                                            />
+                            <Button RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Visibility="Collapsed"
+                                        Content="&#xE7E7;"
+                                        Background="Transparent"
+                                        Style="{StaticResource AdditonalControlButtonStyle}"
+                                        ToolTipService.ToolTip="更多选择"
+                                        IsDoubleTapEnabled="False">
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem x:ConnectionId='14' Text="立即播放" Name="PlayMenu"                       />
+                                        <MenuFlyoutItem x:ConnectionId='15' Text="收藏" Name="FavMenu"                       />
+                                        <MenuFlyoutItem x:ConnectionId='16' Text="添加到播放列表" Name="AddPlayListMenu"                              />
+                                        <MenuFlyoutSeparator />
+                                        <MenuFlyoutItem x:ConnectionId='17' Text="下载" Name="Download"                        />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </RelativePanel>
+                        <TextBlock x:ConnectionId='11' Grid.Column="6"
                                                              
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
-                        <TextBlock x:ConnectionId='13' Grid.Column="8"
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                                                            />
+                        <TextBlock x:ConnectionId='12' Grid.Column="8"
                                                             
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                                                            />
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

@@ -32,6 +32,7 @@ namespace MusicUWP.ViewPage
         private SongResponseByName WebReqResult;
         private string queryWord;
         private MainPage mainPage;
+        private int _listSelectedIndex = -1;
 
         public SearchSongPage()
         {
@@ -65,7 +66,7 @@ namespace MusicUWP.ViewPage
                         throw new HttpRequestException(WebReqResult.showapi_res_error);
                     }
                 });
-                SongFileManager.SetWebSongByNameList(QueryList, WebReqResult.showapi_res_body.pagebean.contentlist);
+                SongFileManager.SetWebSongByNameList(QueryList, WebReqResult.showapi_res_body.pagebean.contentlist, mainPage.FavoriteSongsList);
             }
             catch (HttpRequestException ex)
             {
@@ -95,11 +96,94 @@ namespace MusicUWP.ViewPage
             ErrorPanel.Visibility = Visibility.Collapsed;
         }
 
-        private void ListView_ItemClick(object sender, ItemClickEventArgs e)
+
+        private void ListView_Tapped(object sender, TappedRoutedEventArgs e)
         {
-            var song = (WebSong)e.ClickedItem;
+            ListView listview = (ListView)sender;
+            Button button;
+            //取消上一次点击的效果
+            if (_listSelectedIndex >= 0)
+            {
+                button = (Button)((RelativePanel)(((Grid)((ListViewItem)listview.ItemsPanelRoot.Children[_listSelectedIndex]).ContentTemplateRoot).Children[3])).Children[1];//获取点击的条目的隐藏按钮
+                button.Visibility = Visibility.Collapsed;
+                button.IsEnabled = false;
+            }
+            base.OnTapped(e);
+            e.Handled = true;
+            button = (Button)((RelativePanel)(((Grid)((ListViewItem)listview.ItemsPanelRoot.Children[listview.SelectedIndex]).ContentTemplateRoot).Children[3])).Children[1];//获取点击的条目的隐藏按钮
+            if (button.Visibility == Visibility.Collapsed)
+            {
+                button.Visibility = Visibility.Visible;
+                button.IsEnabled = true;
+            }
+            else
+            {
+                button.Visibility = Visibility.Collapsed;
+                button.IsEnabled = false;
+            }
+            _listSelectedIndex = listview.SelectedIndex;
+        }
+
+        private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            var song = (WebSong)((ListViewItemPresenter)e.OriginalSource).Content;
+            e.Handled = true;
 
             mainPage.OpenWebSong(song);
+        }
+
+        private void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            var song = (WebSong)((Grid)sender).DataContext;
+            e.Handled = true;
+            mainPage.OpenWebSong(song);
+        }
+
+        private void TextBlock_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            var song = (WebSong)((TextBlock)sender).DataContext;
+            e.Handled = true;
+            mainPage.OpenWebSong(song);
+        }
+
+        private void IsFavBtn_PointerPressed(object sender, PointerRoutedEventArgs e)
+        {
+            Song song = (Song)((TextBlock)sender).DataContext;
+            e.Handled = true;
+            if (song.IsFavorite)
+                mainPage.UnFavorite(song);
+            else
+                mainPage.Favorite(song);
+        }
+
+        private void PlayMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            WebSong song = (WebSong)item.DataContext;
+            mainPage.OpenWebSong(song);
+        }
+
+        private void FavMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+            mainPage.Favorite(song);
+        }
+
+        private void AddPlayListMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+            mainPage.AddToPlayingList(song);
+        }
+
+        private async void Download_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            WebSong song = (WebSong)item.DataContext;
+            string url = song.DownUrl;
+            string title = song.Title;
+            await mainPage.HandleDownload(title, url);
         }
     }
 }

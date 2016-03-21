@@ -97,6 +97,7 @@
     </Compile>
     <Compile Include="Converter\BoolVisibilityConverter.cs" />
     <Compile Include="Converter\BoolVisibilityReverser.cs" />
+    <Compile Include="Converter\FolderToString.cs" />
     <Compile Include="Converter\DurationPlayerBarConverter.cs" />
     <Compile Include="Converter\FavIconForegroundConverter.cs" />
     <Compile Include="Converter\FavoriteIconConverter.cs" />
@@ -110,6 +111,7 @@
       <DependentUpon>MainPage.xaml</DependentUpon>
     </Compile>
     <Compile Include="Models\PageParameters.cs" />
+    <Compile Include="ViewModels\DownloadSongViewModel.cs" />
     <Compile Include="ViewModels\LocalSong.cs" />
     <Compile Include="ViewModels\Song.cs" />
     <Compile Include="Models\SongResponseBandList.cs" />

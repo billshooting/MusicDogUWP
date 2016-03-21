@@ -5,9 +5,133 @@
     xmlns:local="using:MusicUWP.ViewPage"
     xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
     xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm ="using:MusicUWP.ViewModels"
     mc:Ignorable="d">
 
     <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
-        <MediaTransportControls/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <RelativePanel Margin="0,20,0,0">
+            <TextBlock Text="下载列表" FontSize="18" 
+                       Name="TitleText"
+                       RelativePanel.AlignLeftWithPanel="True"
+                       VerticalAlignment="Center"
+                       Margin="10,5,0,5"/>
+            <TextBlock FontSize="18"
+                       RelativePanel.RightOf="TitleText"
+                       VerticalAlignment="Center"
+                       Margin="10,5,0,5"
+                       Text="{x:Bind DownloadedSongs.Count, Mode=OneWay, Converter={StaticResource CountConverter}}"/>
+            <TextBlock Name="CurrentFolder"
+                       Text="{x:Bind StorageFolder.Path ,Mode=OneWay, Converter={StaticResource FolderToStringConverter}}"
+                       FontSize="16"
+                       RelativePanel.LeftOf="SavePathBtn"
+                       Margin="10,7,20,5"/>
+            <Button  Content="选择目录" 
+                      Name="SavePathBtn"
+                      RelativePanel.AlignRightWithPanel="True" 
+                      Foreground="Blue" 
+                      BorderThickness="0"
+                      Background="White"
+                      VerticalAlignment="Center"
+                      Margin="0,5,10,5"
+                      Click="SavePathBtn_Click"/>
+        </RelativePanel>
+
+        <ScrollViewer Grid.Row="1">
+            <ListView 
+                  Name="DownloadListView"
+                  IsItemClickEnabled="False"
+                  IsDoubleTapEnabled="True"
+                  DoubleTapped="DownloadListView_DoubleTapped"
+                  Tapped="DownloadListView_Tapped"
+                  VerticalAlignment="Stretch"
+                  HorizontalAlignment="Stretch"
+                  ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
+                  ItemsSource="{x:Bind DownloadedSongs}">
+                <ListView.ItemTemplate >
+                    <DataTemplate x:DataType="vm:LocalSong">
+                        <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto" DoubleTapped="Grid_DoubleTapped">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="30" />
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="30"/>
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="2.5*" MinWidth="150" />
+                                <ColumnDefinition Width="10"/>
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="*" />
+                                <ColumnDefinition Width="10" />
+                                <ColumnDefinition Width="2*"/>
+                            </Grid.ColumnDefinitions>
+                            <TextBlock Grid.Column="0"
+                                       Text="{x:Bind Id}"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IdConverter}}"
+                                       IsDoubleTapEnabled="False"/>
+                            <!--用来显示当前播放歌曲的喇叭图标-->
+                            <TextBlock Grid.Column="0"
+                                       Text="&#xE15D;"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IsPlayingConverter}}"
+                                       IsDoubleTapEnabled="False"
+                                       Foreground="IndianRed"/>
+                            <TextBlock Grid.Column="2"
+                                       Text="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnIconConverter}}"
+                                       FontFamily="Segoe MDL2 Assets"
+                                       Foreground="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnForegroundConverter}}"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       IsTapEnabled="False"
+                                       IsDoubleTapEnabled="False"
+                                       PointerPressed="TextBlock_PointerPressed"/>
+                            <RelativePanel Margin="0" 
+                                           Padding="0"
+                                           Grid.Column="4"
+                                           VerticalAlignment="Stretch">
+                                <TextBlock RelativePanel.AlignLeftWithPanel="True"
+                                       Text="{x:Bind Title}"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                                <Button RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Visibility="Collapsed"
+                                        Content="&#xE7E7;"
+                                        Background="Transparent"
+                                        Style="{StaticResource AdditonalControlButtonStyle}"
+                                        ToolTipService.ToolTip="更多选择"
+                                        IsDoubleTapEnabled="False">
+                                    <Button.Flyout>
+                                        <MenuFlyout>
+                                            <MenuFlyoutItem Text="立即播放" Name="PlayMenu" Click="PlayMenu_Click"/>
+                                            <MenuFlyoutItem Text="收藏" Name="FavMenu" Click="FavMenu_Click" />
+                                            <MenuFlyoutItem Text="添加到播放列表" Name="AddPlayListMenu" Click="AddPlayListMenu_Click"/>
+                                        </MenuFlyout>
+                                    </Button.Flyout>
+                                </Button>
+                            </RelativePanel>
+                            <TextBlock Grid.Column="6"
+                                       Text="{x:Bind Artist}"
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                            <TextBlock Grid.Column="8"
+                                       Text="{x:Bind Duration, Converter={StaticResource TimeSpanConverter}}"
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                            <TextBlock Grid.Column="10"
+                                       Text="{x:Bind SongFile.Path}"
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                        </Grid>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+
+            </ListView>
+        </ScrollViewer>
     </Grid>
 </Page>

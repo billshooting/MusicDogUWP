@@ -70,6 +70,8 @@
                 <Button Name="PlayAllBtn"
                         HorizontalAlignment="Center"
                         VerticalAlignment="Center"
+                        Background="Transparent"
+                        Style="{StaticResource NoMouseOverBtnStyle}"
                         Content="播放全部"
                         Margin="10"
                         Grid.Row="1"
@@ -78,14 +80,15 @@
 
         </StackPanel>
 
-        <ListView IsItemClickEnabled="True"
-                  ItemClick="ListView_ItemClick"
+        <ListView IsItemClickEnabled="False"
+                  Tapped="ListView_Tapped"
+                  DoubleTapped="ListView_DoubleTapped"
                   ItemsSource="{x:Bind WebSongsList}"
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   Grid.Row="1">
             <ListView.ItemTemplate >
                 <DataTemplate x:DataType="vm:WebSong">
-                    <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto">
+                    <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto" DoubleTapped="Grid_DoubleTapped">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />
                             <ColumnDefinition Width="10"/>
@@ -95,37 +98,66 @@
                             <ColumnDefinition Width="10"/>
                             <ColumnDefinition Width="*" />
                             <ColumnDefinition Width="10" />
-                            <ColumnDefinition Width="*" />
-                            <ColumnDefinition Width="10" />
                             <ColumnDefinition Width="*"/>
                         </Grid.ColumnDefinitions>
                         <TextBlock Grid.Column="0"
                                        Text="{x:Bind Id}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IdConverter}}"
+                                       IsDoubleTapEnabled="False"/>
                         <!--用来显示当前播放歌曲的喇叭图标-->
                         <TextBlock Grid.Column="0"
                                        Text="&#xE15D;"
                                        FontFamily="Segoe MDL2 Assets"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"
                                        Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IsPlayingConverter}}"
+                                       IsDoubleTapEnabled="False"
                                        Foreground="IndianRed"/>
                         <TextBlock Grid.Column="2"
+                                       Name="IsFavBtn"
                                        Text="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnIconConverter}}"
                                        FontFamily="Segoe MDL2 Assets"
                                        Foreground="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnForegroundConverter}}"
+                                       IsDoubleTapEnabled="False"
+                                       IsTapEnabled="False"
+                                       PointerPressed="IsFavBtn_PointerPressed"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"/>
-                        <TextBlock Grid.Column="4"
+                        <RelativePanel Margin="0" 
+                                       Padding="0"
+                                       Grid.Column="4"
+                                       VerticalAlignment="Stretch">
+                            <TextBlock RelativePanel.AlignLeftWithPanel="True"
                                        Text="{x:Bind Title}"
-                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                            <Button RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Visibility="Collapsed"
+                                        Content="&#xE7E7;"
+                                        Background="Transparent"
+                                        Style="{StaticResource AdditonalControlButtonStyle}"
+                                        ToolTipService.ToolTip="更多选择"
+                                        IsDoubleTapEnabled="False">
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="立即播放" Name="PlayMenu" Click="PlayMenu_Click"/>
+                                        <MenuFlyoutItem Text="收藏" Name="FavMenu" Click="FavMenu_Click" />
+                                        <MenuFlyoutItem Text="添加到播放列表" Name="AddPlayListMenu" Click="AddPlayListMenu_Click"/>
+                                        <MenuFlyoutSeparator />
+                                        <MenuFlyoutItem Text="下载" Name="Download" Click="Download_Click" />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </RelativePanel>
                         <TextBlock Grid.Column="6"
                                        Text="{x:Bind Artist}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                         <TextBlock Grid.Column="8"
-                                       Text="{x:Bind Albummid}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
-                        <TextBlock Grid.Column="10"
                                        Text="{x:Bind Duration, Converter={StaticResource TimeSpanConverter}}"
-                                       Style="{StaticResource MusicListDetailInfoTextStyle}"/>
+                                       Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

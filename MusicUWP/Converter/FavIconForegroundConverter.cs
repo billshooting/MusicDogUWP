@@ -17,7 +17,13 @@ namespace MusicUWP.Converter
 
         public object ConvertBack(object value, Type targetType, object parameter, string language)
         {
-            throw new NotImplementedException();
+            SolidColorBrush brush = (SolidColorBrush)value;
+            if (brush.Color == Windows.UI.Colors.IndianRed)
+                return true;
+            else if (brush.Color == Windows.UI.Colors.DarkGray)
+                return false;
+            else
+                return false;
         }
     }
 }
