@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace MusicUWP.ViewModels
 {
-    public  class DownloadSongViewModel : LocalSong , INotifyPropertyChanged
+    public  class DownloadSongViewModel : Song , INotifyPropertyChanged
     {
         private double _processPercent;
         public double ProcessPercent

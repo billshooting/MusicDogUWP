@@ -38,15 +38,16 @@
 
         <ListView Grid.Row="1"
                   Name="FavMusicListView"
-                  IsItemClickEnabled="True"
-                  ItemClick="FavMusicListView_ItemClick"
+                  IsItemClickEnabled="False"
+                  DoubleTapped="FavMusicListView_DoubleTapped"
+                  Tapped="FavMusicListView_Tapped"
                   VerticalAlignment="Stretch"
                   HorizontalAlignment="Stretch"
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   ItemsSource="{x:Bind FavoriteSongs}">
             <ListView.ItemTemplate >
                 <DataTemplate x:DataType="vm:Song">
-                    <Grid HorizontalAlignment="Stretch" Height="40" >
+                    <Grid HorizontalAlignment="Stretch" Height="40" DoubleTapped="Grid_DoubleTapped">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30"/>
                             <ColumnDefinition Width="10" />
@@ -63,6 +64,8 @@
                                    Style="{StaticResource MusicListKeyInfoTextStyle}"
                                    Foreground="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnForegroundConverter}}"
                                    Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IdConverter}}"
+                                   IsDoubleTapEnabled="False"
+                                   IsTapEnabled="False"
                                    FontFamily="Segoe MDL2 Assets"/>
                         <!--用来显示当前播放歌曲的喇叭图标-->
                         <TextBlock Grid.Column="0"
@@ -70,22 +73,52 @@
                                        FontFamily="Segoe MDL2 Assets"
                                        Style="{StaticResource MusicListKeyInfoTextStyle}"
                                        Visibility="{x:Bind IsPlaying, Mode=OneWay, Converter={StaticResource IsPlayingConverter}}"
+                                       IsDoubleTapEnabled="False"
+                                       IsTapEnabled="False"
                                        Foreground="IndianRed"/>
-                        <TextBlock Grid.Column="2"
-                                       Text="{x:Bind Title , Mode=OneWay}"
-                                       Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                        <RelativePanel Margin="0" 
+                                       Padding="0"
+                                       Grid.Column="2"
+                                       VerticalAlignment="Stretch">
+                            <TextBlock RelativePanel.AlignLeftWithPanel="True"
+                                       Text="{x:Bind Title}"
+                                       Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                       RelativePanel.AlignVerticalCenterWithPanel="True"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
+                            <Button RelativePanel.AlignRightWithPanel="True"
+                                        RelativePanel.AlignVerticalCenterWithPanel="True"
+                                        Visibility="Collapsed"
+                                        Content="&#xE7E7;"
+                                        Background="Transparent"
+                                        Style="{StaticResource AdditonalControlButtonStyle}"
+                                        ToolTipService.ToolTip="更多选择"
+                                        IsDoubleTapEnabled="False">
+                                <Button.Flyout>
+                                    <MenuFlyout>
+                                        <MenuFlyoutItem Text="立即播放" Name="PlayMenu" Click="PlayMenu_Click"/>
+                                        <MenuFlyoutItem Text="取消收藏" Name="FavMenu" Click="UnFavMenu_Click" />
+                                        <MenuFlyoutItem Text="添加到播放列表" Name="AddPlayListMenu" Click="AddPlayListMenu_Click"/>
+                                        <MenuFlyoutSeparator />
+                                        <MenuFlyoutItem Text="下载" Name="Download" Click="Download_Click" />
+                                    </MenuFlyout>
+                                </Button.Flyout>
+                            </Button>
+                        </RelativePanel>
                         <TextBlock Grid.Column="4"
                                        Text="{x:Bind Artist , Mode=OneWay}"
                                        Style="{StaticResource MusicListDetailInfoTextStyle}"
-                                       x:Phase="1"/>
+                                       x:Phase="1"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                         <TextBlock Grid.Column="6"
                                        Text="{x:Bind Album , Mode=OneWay}"
                                        Style="{StaticResource MusicListDetailInfoTextStyle}"
-                                       x:Phase="2"/>
+                                       x:Phase="2"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                         <TextBlock Grid.Column="8"
                                        Text="{x:Bind Duration , Mode=OneWay , Converter={StaticResource TimeSpanConverter}}"
                                        Style="{StaticResource MusicListDetailInfoTextStyle}"
-                                       x:Phase="2"/>
+                                       x:Phase="2"
+                                       DoubleTapped="TextBlock_DoubleTapped"/>
                     </Grid>
                 </DataTemplate>
             </ListView.ItemTemplate>

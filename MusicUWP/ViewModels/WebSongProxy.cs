@@ -80,15 +80,10 @@ namespace MusicUWP.ViewModels
             return buffer;
         }
 
-        public static async Task DownloadSong(string url, string filename)
+        public static async Task DownloadSong(string url, StorageFile file)
         {
-            FileStream fs = new FileStream(filename, FileMode.OpenOrCreate, FileAccess.Write);
-            BinaryWriter br = new BinaryWriter(fs);
             byte[] buffer = await DownloadSongStream(url);
-            br.Write(buffer);
-
-            fs.Dispose();
-            br.Dispose();
+            await FileIO.WriteBytesAsync(file, buffer);
         }
 
         public static async Task<SongResponseById>GetSongByIdAsync(string songId)

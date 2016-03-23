@@ -148,6 +148,7 @@
         <converter:BoolVisibilityReverser x:Key="IdConverter"/>
         <converter:DurationPlayerBarConverter x:Key="PlayerBarDurationConverter"/>
         <converter:FolderToString x:Key="FolderToStringConverter" />
+        <converter:UrlToBitMapConverter x:Key="UrlToBitMapConverter" />
     </Application.Resources>
 
 </Application>

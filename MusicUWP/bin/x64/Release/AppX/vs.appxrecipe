@@ -1,0 +1,302 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Machine>BILL-PC</Machine>
+    <WindowsUser>BILL</WindowsUser>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetOsVersion>10.0</TargetOsVersion>
+    <TargetOsDescription>Windows 10.0</TargetOsDescription>
+    <SolutionConfiguration>Release|x64</SolutionConfiguration>
+    <PackageArchitecture>x64</PackageArchitecture>
+    <PackageIdentityName>9e2635f8-a0cf-413b-bf7a-3fb31d1ffcf4</PackageIdentityName>
+    <IntermediateOutputPath>C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\obj\x64\Release\</IntermediateOutputPath>
+    <RegisteredManifestChecksum>ABC0A93052566DD8916250B63069DC4024F0F33EDB714A60B59A99208BFDDF0F</RegisteredManifestChecksum>
+    <RegisteredPackageMoniker>9e2635f8-a0cf-413b-bf7a-3fb31d1ffcf4_1.0.156.0_x64__z6byddjjva07e</RegisteredPackageMoniker>
+    <RegisteredUserModeAppID>9e2635f8-a0cf-413b-bf7a-3fb31d1ffcf4_z6byddjjva07e!App</RegisteredUserModeAppID>
+    <RegisteredPackageID>9e2635f8-a0cf-413b-bf7a-3fb31d1ffcf4</RegisteredPackageID>
+    <RegisteredPackagePublisher>CN=bill_</RegisteredPackagePublisher>
+    <RegisteredVersion>1.0.156.0</RegisteredVersion>
+    <JitOptimizationSuppressed>True</JitOptimizationSuppressed>
+  </PropertyGroup>
+  <ItemGroup>
+    <AppXManifest Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\AppxManifest.xml">
+      <PackagePath>AppxManifest.xml</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T14:03:41.184</Modified>
+    </AppXManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BadgeLogo.scale-100.png">
+      <PackagePath>Assets\BadgeLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:00:42.702</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BadgeLogo.scale-125.png">
+      <PackagePath>Assets\BadgeLogo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:04:32.796</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BadgeLogo.scale-150.png">
+      <PackagePath>Assets\BadgeLogo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:04:19.540</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BadgeLogo.scale-200.png">
+      <PackagePath>Assets\BadgeLogo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:00:28.140</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BadgeLogo.scale-400.png">
+      <PackagePath>Assets\BadgeLogo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:03:43.656</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\内地.jpg">
+      <PackagePath>Assets\BandListCover\内地.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\摇滚.jpg">
+      <PackagePath>Assets\BandListCover\摇滚.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\日本.jpg">
+      <PackagePath>Assets\BandListCover\日本.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\欧美.jpg">
+      <PackagePath>Assets\BandListCover\欧美.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\港台.jpg">
+      <PackagePath>Assets\BandListCover\港台.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\热歌.jpg">
+      <PackagePath>Assets\BandListCover\热歌.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\销量.jpg">
+      <PackagePath>Assets\BandListCover\销量.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\陈粒.jpg">
+      <PackagePath>Assets\BandListCover\陈粒.jpg</PackagePath>
+      <Modified>2016-02-22T14:16:02.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\BandListCover\韩国.jpg">
+      <PackagePath>Assets\BandListCover\韩国.jpg</PackagePath>
+      <Modified>2016-02-22T15:43:38.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Default\Default.jpg">
+      <PackagePath>Assets\Default\Default.jpg</PackagePath>
+      <Modified>2016-02-23T12:01:28.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\LockScreenLogo.scale-200.png">
+      <PackagePath>Assets\LockScreenLogo.scale-200.png</PackagePath>
+      <Modified>2015-09-20T08:22:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\SplashScreen.scale-100.png">
+      <PackagePath>Assets\SplashScreen.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:52:02.065</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square150x150Logo.scale-100.png">
+      <PackagePath>Assets\Square150x150Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:36:10.853</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square150x150Logo.scale-200.png">
+      <PackagePath>Assets\Square150x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T08:22:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square310x310Logo.scale-100.png">
+      <PackagePath>Assets\Square310x310Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:36:59.689</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-100.png">
+      <PackagePath>Assets\Square44x44Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:37:46.795</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-125.png">
+      <PackagePath>Assets\Square44x44Logo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:00:12.378</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-150.png">
+      <PackagePath>Assets\Square44x44Logo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:59:52.999</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-200.png">
+      <PackagePath>Assets\Square44x44Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:09:34.259</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.scale-400.png">
+      <PackagePath>Assets\Square44x44Logo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:10:09.780</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-16_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-16_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:01:00.389</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-24_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-24_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:00:42.702</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-256.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-256.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:09:52.147</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square44x44Logo.targetsize-48_altform-unplated.png">
+      <PackagePath>Assets\Square44x44Logo.targetsize-48_altform-unplated.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T07:00:28.140</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Square71x71Logo.scale-100.png">
+      <PackagePath>Assets\Square71x71Logo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:35:29.093</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\StoreLogo.scale-100.png">
+      <PackagePath>Assets\StoreLogo.scale-100.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:41:48.339</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\StoreLogo.scale-125.png">
+      <PackagePath>Assets\StoreLogo.scale-125.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:58:08.812</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\StoreLogo.scale-150.png">
+      <PackagePath>Assets\StoreLogo.scale-150.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:57:52.342</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\StoreLogo.scale-200.png">
+      <PackagePath>Assets\StoreLogo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:57:37.937</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\StoreLogo.scale-400.png">
+      <PackagePath>Assets\StoreLogo.scale-400.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2016-03-23T06:40:19.940</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Assets\Wide310x150Logo.scale-200.png">
+      <PackagePath>Assets\Wide310x150Logo.scale-200.png</PackagePath>
+      <ReRegisterAppIfChanged>true</ReRegisterAppIfChanged>
+      <Modified>2015-09-20T08:22:50.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\ClrCompression.dll">
+      <PackagePath>ClrCompression.dll</PackagePath>
+      <Modified>2016-01-22T12:23:27.656</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\Cortana.xml">
+      <PackagePath>Cortana.xml</PackagePath>
+      <Modified>2016-02-26T13:57:56.000</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\MusicUWP.dll">
+      <PackagePath>MusicUWP.dll</PackagePath>
+      <Modified>2016-03-23T14:03:40.260</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\MusicUWP.exe">
+      <PackagePath>MusicUWP.exe</PackagePath>
+      <Modified>2016-03-23T14:03:41.016</Modified>
+    </AppxPackagedFile>
+    <AppxPackagedFile Include="C:\Users\BILL\Documents\Visual Studio 2015\MusicUWP\MusicUWP\bin\x64\Release\ilc\resources.pri">
+      <PackagePath>resources.pri</PackagePath>
+      <Modified>2016-03-23T14:02:09.240</Modified>
+    </AppxPackagedFile>
+  </ItemGroup>
+  <ItemGroup>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\">
+      <Name>Microsoft.NET.Native.Framework.1.2</Name>
+      <Version>1.2.23231.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.1.2, MinVersion = 1.2.23231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\.\arm\ret\Native\Microsoft.NET.Native.Framework.1.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\">
+      <Name>Microsoft.NET.Native.Framework.1.2</Name>
+      <Version>1.2.23231.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.1.2, MinVersion = 1.2.23231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\.\x64\ret\Native\Microsoft.NET.Native.Framework.1.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\">
+      <Name>Microsoft.NET.Native.Framework.1.2</Name>
+      <Version>1.2.23231.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Framework.1.2, MinVersion = 1.2.23231.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Framework.1.2\1.2\.\x86\ret\Native\Microsoft.NET.Native.Framework.1.2.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\">
+      <Name>Microsoft.NET.Native.Runtime.1.1</Name>
+      <Version>1.1.23406.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.1.1, MinVersion = 1.1.23406.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\.\AppX\ARM\Microsoft.NET.Native.Runtime.1.1.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\">
+      <Name>Microsoft.NET.Native.Runtime.1.1</Name>
+      <Version>1.1.23406.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.1.1, MinVersion = 1.1.23406.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\.\AppX\x64\Microsoft.NET.Native.Runtime.1.1.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\">
+      <Name>Microsoft.NET.Native.Runtime.1.1</Name>
+      <Version>1.1.23406.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.NET.Native.Runtime.1.1, MinVersion = 1.1.23406.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.NET.Native.Runtime.1.1\1.1\.\AppX\x86\Microsoft.NET.Native.Runtime.1.1.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>ARM</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\ARM\Microsoft.VCLibs.ARM.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>x64</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x64\Microsoft.VCLibs.x64.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+    <ResolvedSDKReference Include="C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\">
+      <Name>Microsoft.VCLibs.140.00</Name>
+      <Version>14.0.22929.0</Version>
+      <Architecture>x86</Architecture>
+      <FrameworkIdentity>Name = Microsoft.VCLibs.140.00, MinVersion = 14.0.22929.0, Publisher = %27CN=Microsoft Corporation, O=Microsoft Corporation, L=Redmond, S=Washington, C=US%27</FrameworkIdentity>
+      <AppxLocation>C:\Program Files %28x86%29\Microsoft SDKs\Windows Kits\10\ExtensionSDKs\Microsoft.VCLibs\14.0\.\AppX\Retail\x86\Microsoft.VCLibs.x86.14.00.appx</AppxLocation>
+      <MoreInfo>
+      </MoreInfo>
+    </ResolvedSDKReference>
+  </ItemGroup>
+</Project>

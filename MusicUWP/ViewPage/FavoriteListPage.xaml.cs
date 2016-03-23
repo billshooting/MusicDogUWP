@@ -28,6 +28,7 @@ namespace MusicUWP.ViewPage
         public ObservableCollection<Song> FavoriteSongs { get; set; } = new ObservableCollection<Song>();
 
         private MainPage mainPage;
+        private int _listSelectedIndex = -1;
 
         public FavoriteListPage()
         {
@@ -47,19 +48,136 @@ namespace MusicUWP.ViewPage
             base.OnNavigatedTo(e);
         }
 
-        private  async void FavMusicListView_ItemClick(object sender, ItemClickEventArgs e)
+
+        private async void FavMusicListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            Song song = (Song)e.ClickedItem;
+            Song song = (Song)((ListViewItemPresenter)e.OriginalSource).Content;
+            e.Handled = true;
 
             // 将选中的Song传给MainPage
             if (song.IsLoaclSong)
             {
-                var nextSong = (LocalSong)song;
+                var nextSong = (Song)song;
                 await mainPage.OpenLocalSongAsync(nextSong);
             }
             else
             {
                 //从网络中打开歌曲
+                var nextSong = (Song)song;
+                mainPage.OpenWebSong(nextSong);
+            }
+        }
+
+        private void FavMusicListView_Tapped(object sender, TappedRoutedEventArgs e)
+        {
+            ListView listview = (ListView)sender;
+            Button button;
+            //取消上一次点击的效果
+            if (_listSelectedIndex >= 0)
+            {
+                button = (Button)((RelativePanel)(((Grid)((ListViewItem)listview.ItemsPanelRoot.Children[_listSelectedIndex]).ContentTemplateRoot).Children[2])).Children[1];//获取点击的条目的隐藏按钮
+                button.Visibility = Visibility.Collapsed;
+                button.IsEnabled = false;
+            }
+            base.OnTapped(e);
+            e.Handled = true;
+            button = (Button)((RelativePanel)(((Grid)((ListViewItem)listview.ItemsPanelRoot.Children[listview.SelectedIndex]).ContentTemplateRoot).Children[2])).Children[1];//获取点击的条目的隐藏按钮
+            if (button.Visibility == Visibility.Collapsed)
+            {
+                button.Visibility = Visibility.Visible;
+                button.IsEnabled = true;
+            }
+            else
+            {
+                button.Visibility = Visibility.Collapsed;
+                button.IsEnabled = false;
+            }
+            _listSelectedIndex = listview.SelectedIndex;
+        }
+
+        private async void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Song song = (Song)((Grid)sender).DataContext;
+            e.Handled = true;
+
+            // 将选中的Song传给MainPage
+            if (song.IsLoaclSong)
+            {
+                var nextSong = (Song)song;
+                await mainPage.OpenLocalSongAsync(nextSong);
+            }
+            else
+            {
+                //从网络中打开歌曲
+                var nextSong = (Song)song;
+                mainPage.OpenWebSong(nextSong);
+            }
+        }
+
+        private async void TextBlock_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
+        {
+            Song song = (Song)((TextBlock)sender).DataContext;
+            e.Handled = true;
+
+            // 将选中的Song传给MainPage
+            if (song.IsLoaclSong)
+            {
+                var nextSong = (Song)song;
+                await mainPage.OpenLocalSongAsync(nextSong);
+            }
+            else
+            {
+                //从网络中打开歌曲
+                var nextSong = (Song)song;
+                mainPage.OpenWebSong(nextSong);
+            }
+        }
+
+        private async void PlayMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+
+            // 将选中的Song传给MainPage
+            if (song.IsLoaclSong)
+            {
+                var nextSong = (Song)song;
+                await mainPage.OpenLocalSongAsync(nextSong);
+            }
+            else
+            {
+                //从网络中打开歌曲
+                var nextSong = (Song)song;
+                mainPage.OpenWebSong(nextSong);
+            }
+        }
+
+        private void UnFavMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+            mainPage.UnFavorite(song);
+        }
+
+        private void AddPlayListMenu_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+            mainPage.AddToPlayingList(song);
+        }
+
+        private async void Download_Click(object sender, RoutedEventArgs e)
+        {
+            MenuFlyoutItem item = (MenuFlyoutItem)(sender);
+            Song song = (Song)item.DataContext;
+            if (song.IsLoaclSong)
+                return; //最好提示它是本地歌曲
+            else
+            {
+                Song websong = (Song)song;
+                string url = websong.DownUrl;
+                string title = websong.Title;
+                await mainPage.HandleDownload(title, url);
             }
         }
     }

@@ -53,7 +53,7 @@
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   ItemsSource="{x:Bind DownloadedSongs}">
                 <ListView.ItemTemplate >
-                    <DataTemplate x:DataType="vm:LocalSong">
+                    <DataTemplate x:DataType="vm:Song">
                         <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto" DoubleTapped="Grid_DoubleTapped">
                             <Grid.ColumnDefinitions>
                                 <ColumnDefinition Width="30" />
@@ -124,7 +124,7 @@
                                        Style="{StaticResource MusicListDetailInfoTextStyle}"
                                        DoubleTapped="TextBlock_DoubleTapped"/>
                             <TextBlock Grid.Column="10"
-                                       Text="{x:Bind SongFile.Path}"
+                                       Text="{x:Bind SongFile}"
                                        Style="{StaticResource MusicListDetailInfoTextStyle}"
                                        DoubleTapped="TextBlock_DoubleTapped"/>
                         </Grid>

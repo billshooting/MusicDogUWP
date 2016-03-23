@@ -9,6 +9,8 @@ using Windows.Storage;
 using Windows.Storage.FileProperties;
 using Windows.UI.Xaml.Media.Imaging;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using System.IO;
 
 namespace MusicUWP.ViewModels
 {
@@ -32,8 +34,9 @@ namespace MusicUWP.ViewModels
                 await GetLocalSongsAysnc(songFiles, folder);
             }
         }
-
-        public static async Task PushFrontSong(ObservableCollection<LocalSong> localSongs, StorageFile songFiles)
+        //
+        // 这个方法用于将下载的歌曲的信息添加到DownloadedSongs中
+        public static async Task PushFrontSongAsync(ObservableCollection<Song> localSongs, StorageFile songFiles)
         {
             // 1. 获取文件信息
             MusicProperties musicProperty = await songFiles.Properties.GetMusicPropertiesAsync();
@@ -44,20 +47,12 @@ namespace MusicUWP.ViewModels
                 StorageItemThumbnail currentThumb = await songFiles.GetThumbnailAsync(ThumbnailMode.MusicView, 60, ThumbnailOptions.UseCurrentScale);
 
                 // 2.将文件信息转换为数据模型
-                LocalSong song = new LocalSong();
+                Song song = new Song();
 
-                var albumCover = new BitmapImage();
-                if (currentThumb != null)
-                {
-                    await albumCover.SetSourceAsync(currentThumb);
-                }
-                else
-                {
-                    albumCover = new BitmapImage(new Uri("/Assets/Default/Default.jpg"));
-                }
+                string coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
                 song.Id = localSongs.Count + 1;
-                song.SongFile = songFiles;
+                song.SongFile = songFiles.Path;
                 song.Title = musicProperty.Title;
                 if (!string.IsNullOrEmpty(musicProperty.Artist))
                     song.Artist = musicProperty.Artist;
@@ -68,7 +63,7 @@ namespace MusicUWP.ViewModels
                 else
                     song.Album = "未知唱片";
                 song.Duration = musicProperty.Duration;
-                song.AlbumCover = albumCover;
+                song.AlbumCoverUrl = coverUri;
 
                 song.IsPlaying = false;
                 song.IsLoaclSong = true;
@@ -83,7 +78,7 @@ namespace MusicUWP.ViewModels
         /// <param name="localSongs">可显示的歌曲</param>
         /// <param name="songFiles">歌曲文件列表</param>
         /// <returns></returns>
-        private static async Task PopulateSongList(ObservableCollection<LocalSong> localSongs, List<StorageFile> songFiles, IList<Song> FavSongsList = null)
+        private static async Task PopulateSongListAsync(ObservableCollection<Song> localSongs, List<StorageFile> songFiles, IList<Song> FavSongsList = null)
         {
             int Id = 1;
             
@@ -98,7 +93,7 @@ namespace MusicUWP.ViewModels
                 if (localsong != null)
                 {
                     localsong.Id = Id;
-                    localSongs.Add((LocalSong)localsong);
+                    localSongs.Add(localsong);
                     Id++;
                 }
                 else
@@ -106,20 +101,12 @@ namespace MusicUWP.ViewModels
                     StorageItemThumbnail currentThumb = await file.GetThumbnailAsync(ThumbnailMode.MusicView, 60, ThumbnailOptions.UseCurrentScale);
 
                     // 2.将文件信息转换为数据模型
-                    LocalSong song = new LocalSong();
+                    Song song = new Song();
 
-                    var albumCover = new BitmapImage();
-                    if (currentThumb != null)
-                    {
-                        await albumCover.SetSourceAsync(currentThumb);
-                    }
-                    else
-                    {
-                        albumCover = new BitmapImage(new Uri("/Assets/Default/Default.jpg"));
-                    }
+                    string coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
                     song.Id = Id;
-                    song.SongFile = file;
+                    song.SongFile = file.Path;
                     song.Title = musicProperty.Title;
                     if (!string.IsNullOrEmpty(musicProperty.Artist))
                         song.Artist = musicProperty.Artist;
@@ -130,7 +117,7 @@ namespace MusicUWP.ViewModels
                     else
                         song.Album = "未知唱片";
                     song.Duration = musicProperty.Duration;
-                    song.AlbumCover = albumCover;
+                    song.AlbumCoverUrl = coverUri;
 
                     song.IsPlaying = false;
                     song.IsLoaclSong = true;
@@ -141,14 +128,13 @@ namespace MusicUWP.ViewModels
             }
         }
 
-
         /// <summary>
         /// 将指定文件夹下的歌曲全部添加到传入参数songs中
         /// </summary>
         /// <param name="localSongs">保存歌曲的列表</param>
         /// <param name="musicFolder">要扫描的文件夹</param>
         /// <returns></returns>
-        public static async Task SetMusicList(ObservableCollection<LocalSong> localSongs,StorageFolder musicFolder = null)
+        public static async Task SetMusicListAsync(ObservableCollection<Song> localSongs,StorageFolder musicFolder = null)
         {
             List<StorageFile> songfiles = new List<StorageFile>();
             if (musicFolder == null)
@@ -157,11 +143,18 @@ namespace MusicUWP.ViewModels
             }
 
             await GetLocalSongsAysnc(songfiles, musicFolder);
-            await PopulateSongList(localSongs, songfiles);
+            await PopulateSongListAsync(localSongs, songfiles);
 
         }
 
-        public static async Task SetMusicList(ObservableCollection<LocalSong> localSongs, List<StorageFolder> musicFolders, IList<Song> FavSongsList)
+        /// <summary>
+        /// 将指定文件夹下的歌曲全部添加到传入参数songs中，如果这个歌曲已经在FavSongList中，则直接引用其中的信息
+        /// </summary>
+        /// <param name="localSongs">保存歌曲的列表</param>
+        /// <param name="musicFolders">要扫描的文件夹</param>
+        /// <param name="FavSongsList">收藏的歌曲</param>
+        /// <returns></returns>
+        public static async Task SetMusicListAsync(ObservableCollection<Song> localSongs, List<StorageFolder> musicFolders, IList<Song> FavSongsList)
         {
             List<StorageFile> songfiles = new List<StorageFile>();
             if (musicFolders == null || musicFolders.Count == 0)
@@ -172,25 +165,29 @@ namespace MusicUWP.ViewModels
             {
                 await GetLocalSongsAysnc(songfiles, folder);
             }
-            await PopulateSongList(localSongs, songfiles, FavSongsList);
+            await PopulateSongListAsync(localSongs, songfiles, FavSongsList);
         }
 
-        public static void SetWebSongsByBandList(ObservableCollection<WebSong> displaySongs, List<WebRequestSong>webSongs)
+        /// <summary>
+        /// 将Json对应的数据转换成ViewModel需要的数据形式 
+        /// 榜单的形式
+        /// </summary>
+        /// <param name="displaySongs">ViewModel需要的数据列表</param>
+        /// <param name="webSongs">Json对应的C#数据格式</param>
+        public static void SetWebSongsByBandList(ObservableCollection<Song> displaySongs, List<WebRequestSong>webSongs)
         {
             int id = 1;
             foreach(WebRequestSong websong in webSongs)
             {
                 if (string.IsNullOrEmpty(websong.songname))
                     continue;
-                BitmapImage albumCover = new BitmapImage();
-                Uri uri;
+                string coverUri;
                 if (!string.IsNullOrEmpty(websong.albumpic_small) && Regex.IsMatch(websong.albumpic_small, uriMatchKey))
-                    uri = new Uri(websong.albumpic_small, UriKind.Absolute);
+                    coverUri = websong.albumpic_small;
                 else
-                    uri = new Uri("ms-appx:///Assets/Default/Default.jpg", UriKind.Absolute);
-                albumCover.UriSource = uri;
+                    coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
-                WebSong displaySong = new WebSong()
+                Song displaySong = new Song()
                 {
                     IsLoaclSong = false,
                     IsFavorite = false,
@@ -199,7 +196,7 @@ namespace MusicUWP.ViewModels
                     Title = websong.songname,
                     Artist = websong.singername,
                     Duration = new TimeSpan(0, websong.seconds / 60, websong.seconds % 60),
-                    AlbumCover = albumCover,
+                    AlbumCoverUrl = coverUri,
                     Songid = websong.songid,
                     Singerid = websong.singerid,
                     Albumid = websong.albumid,
@@ -214,7 +211,14 @@ namespace MusicUWP.ViewModels
             }
         }
 
-        public static void SetWebSongsByBandList(ObservableCollection<WebSong> displaySongs, List<WebRequestSong> webSongs, IList<Song> FavSongsList)
+        /// <summary>
+        /// 将Json对应的数据转换成ViewModel需要的数据形式，但如果收藏列表已经有了，则使用收藏列表中的数据
+        /// 榜单的形式
+        /// </summary>
+        /// <param name="displaySongs">ViewModel对应的数据列表</param>
+        /// <param name="webSongs">Json对应的C#格式列表</param>
+        /// <param name="FavSongsList">收藏的歌曲的列表</param>
+        public static void SetWebSongsByBandList(ObservableCollection<Song> displaySongs, List<WebRequestSong> webSongs, IList<Song> FavSongsList)
         {
             int id = 1;
             foreach (WebRequestSong websong in webSongs)
@@ -223,22 +227,21 @@ namespace MusicUWP.ViewModels
                 if (song != null)
                 {
                     song.Id = id;
-                    displaySongs.Add((WebSong)song);
+                    displaySongs.Add(song);
                     id++;
                 }
                 else
                 {
                     if (string.IsNullOrEmpty(websong.songname))
                         continue;
-                    BitmapImage albumCover = new BitmapImage();
-                    Uri uri;
+                    //BitmapImage albumCover = new BitmapImage();
+                    string coverUri;
                     if (!string.IsNullOrEmpty(websong.albumpic_small) && Regex.IsMatch(websong.albumpic_small, uriMatchKey))
-                        uri = new Uri(websong.albumpic_small, UriKind.Absolute);
+                        coverUri = websong.albumpic_small;
                     else
-                        uri = new Uri("ms-appx:///Assets/Default/Default.jpg", UriKind.Absolute);
-                    albumCover.UriSource = uri;
+                        coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
-                    WebSong displaySong = new WebSong()
+                    Song displaySong = new Song()
                     {
                         IsLoaclSong = false,
                         IsFavorite = false,
@@ -247,7 +250,7 @@ namespace MusicUWP.ViewModels
                         Title = websong.songname,
                         Artist = websong.singername,
                         Duration = new TimeSpan(0, websong.seconds / 60, websong.seconds % 60),
-                        AlbumCover = albumCover,
+                        AlbumCoverUrl = coverUri,
                         Songid = websong.songid,
                         Singerid = websong.singerid,
                         Albumid = websong.albumid,
@@ -263,28 +266,27 @@ namespace MusicUWP.ViewModels
             }
         }
 
-        public static void SetWebSongByNameList(ObservableCollection<WebSong> displaySongs, List<Contentlist> webSongs)
+        /// <summary>
+        /// 将Json对应的数据转换成ViewModel需要的数据形式 
+        /// 搜索的形式
+        /// </summary>
+        /// <param name="displaySongs">ViewModel需要的数据列表</param>
+        /// <param name="webSongs">Json对应的C#数据格式列表</param>
+        public static void SetWebSongByNameList(ObservableCollection<Song> displaySongs, List<Contentlist> webSongs)
         {
             int id = 1;
             foreach (var websong in webSongs)
             {
                 if (string.IsNullOrEmpty(websong.songname))
                     continue;
-                BitmapImage albumCover = new BitmapImage();
-                Uri uri;
-                if ( !string.IsNullOrEmpty(websong.albumpic_small)&&Regex.IsMatch(websong.albumpic_small, uriMatchKey))
-                {
-                    uri = new Uri(websong.albumpic_small, UriKind.Absolute);
-                    albumCover.UriSource = uri;
-                }
+                string coverUri;
+                if (!string.IsNullOrEmpty(websong.albumpic_small) && Regex.IsMatch(websong.albumpic_small, uriMatchKey))
+                    coverUri = websong.albumpic_small;
                 else
-                {
-                    uri = new Uri("ms-appx:///Assets/Default/Default.jpg",UriKind.Absolute);
-                    albumCover.UriSource = uri;
-                }
-                
+                    coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
-                WebSong displaySong = new WebSong()
+
+                Song displaySong = new Song()
                 {
                     IsLoaclSong = false,
                     IsFavorite = false,
@@ -293,7 +295,7 @@ namespace MusicUWP.ViewModels
                     Title = websong.songname,
                     Artist = websong.singername,
                     Album = websong.albumname,
-                    AlbumCover = albumCover,
+                    AlbumCoverUrl = coverUri,
                     //Duration = new TimeSpan(0, websong.seconds / 60, websong.seconds % 60),
                     Songid = websong.songid,
                     Singerid = websong.singerid,
@@ -309,7 +311,14 @@ namespace MusicUWP.ViewModels
             }
         }
 
-        public static void SetWebSongByNameList(ObservableCollection<WebSong> displaySongs, List<Contentlist> webSongs , IList<Song> FavSongsList)
+        /// <summary>
+        /// 将Json对应的数据转换成ViewModel需要的数据形式 
+        /// 搜索的形式
+        /// </summary>
+        /// <param name="displaySongs"></param>
+        /// <param name="webSongs"></param>
+        /// <param name="FavSongsList"></param>
+        public static void SetWebSongByNameList(ObservableCollection<Song> displaySongs, List<Contentlist> webSongs , IList<Song> FavSongsList)
         {
             int id = 1;
             foreach (var websong in webSongs)
@@ -318,28 +327,21 @@ namespace MusicUWP.ViewModels
                 if (song != null)
                 {
                     song.Id = id;
-                    displaySongs.Add((WebSong)song);
+                    displaySongs.Add(song);
                     id++;
                 }
                 else
                 {
                     if (string.IsNullOrEmpty(websong.songname))
                         continue;
-                    BitmapImage albumCover = new BitmapImage();
-                    Uri uri;
+                    string coverUri;
                     if (!string.IsNullOrEmpty(websong.albumpic_small) && Regex.IsMatch(websong.albumpic_small, uriMatchKey))
-                    {
-                        uri = new Uri(websong.albumpic_small, UriKind.Absolute);
-                        albumCover.UriSource = uri;
-                    }
+                        coverUri = websong.albumpic_small;
                     else
-                    {
-                        uri = new Uri("ms-appx:///Assets/Default/Default.jpg", UriKind.Absolute);
-                        albumCover.UriSource = uri;
-                    }
+                        coverUri = "ms-appx:///Assets/Default/Default.jpg";
 
 
-                    WebSong displaySong = new WebSong()
+                    Song displaySong = new Song()
                     {
                         IsLoaclSong = false,
                         IsFavorite = false,
@@ -348,7 +350,7 @@ namespace MusicUWP.ViewModels
                         Title = websong.songname,
                         Artist = websong.singername,
                         Album = websong.albumname,
-                        AlbumCover = albumCover,
+                        AlbumCoverUrl = coverUri,
                         //Duration = new TimeSpan(0, websong.seconds / 60, websong.seconds % 60),
                         Songid = websong.songid,
                         Singerid = websong.singerid,
@@ -364,6 +366,59 @@ namespace MusicUWP.ViewModels
                 }
             }
         }
+
+        private static async Task<string> SerializeStatusAsync<T>(T status)
+        {
+            string str;
+            str = await Task.Run(()=> { return JsonConvert.SerializeObject(status); });
+            return str;
+        }
+
+        private static async Task<T> DeserializeStatusAsync<T>(string str)
+        {
+            T status = await Task.Run(() => { return JsonConvert.DeserializeObject<T>(str); });
+            return status;
+        }
+
+        private static async Task SaveToLocalAsync(string str, StorageFile file)
+        {
+            await FileIO.WriteTextAsync(file, str);
+        }
+
+        private static async Task<string> LoadFromLocalAsync(StorageFile file)
+        {
+            return await FileIO.ReadTextAsync(file);
+        }
+
+        public static async Task SerializeSettingsAsync(StatusSerialization status, StorageFile file)
+        {
+            string str = await SerializeStatusAsync(status);
+            await SaveToLocalAsync(str, file);
+        }
+
+        public static void SerializeSettings(StatusSerialization status, string path)
+        {
+            FileStream fs = new FileStream(path, FileMode.Create, FileAccess.Write);
+            StreamWriter sw = new StreamWriter(fs);
+            string str = JsonConvert.SerializeObject(status); 
+            try { }
+            finally
+            {
+                sw.Write(str);
+
+                sw.Dispose();
+                fs.Dispose();
+            }
+        }
+
+        public static async Task<StatusSerialization> DeserializeSettingsAsync(StorageFile file)
+        {
+            string str = await LoadFromLocalAsync(file);
+            StatusSerialization status = await DeserializeStatusAsync<StatusSerialization>(str);
+            return status;
+        }
+
+
 
     }
 }

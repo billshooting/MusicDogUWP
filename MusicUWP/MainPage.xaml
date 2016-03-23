@@ -96,7 +96,7 @@
 
             <!--歌曲封面-->
             <Image Width="60" Height="60" Stretch="UniformToFill" Name="PlayerBarCover" 
-                   Source="{x:Bind  PlayerBarState.CurrentSong.AlbumCover, Mode=OneWay, TargetNullValue=/Assets/Default/Default.jpg}"/>
+                   Source="{x:Bind  PlayerBarState.CurrentSong.AlbumCoverUrl, Mode=OneWay, Converter={StaticResource UrlToBitMapConverter} }" />
 
             <!--播放控制三个按钮-->
             <Grid Name="PlayControlPanel" Grid.Column="1" Margin="5,0,5,0">
@@ -285,10 +285,30 @@
                                             </StackPanel>
                                         </Button.Content>
                                     </Button>
+                                    <Button BorderThickness="0"
+                                            Background="#FFE6E6E6"
+                                            Name="RemoveFromPlayingListBtn"
+                                            Margin="30,5,0,5"
+                                            Click="RemoveFromPlayingListBtn_Click"
+                                            ToolTipService.ToolTip="将选中项从列表中移除"
+                                            HorizontalAlignment="Right">
+                                        <Button.Content>
+                                            <StackPanel Orientation="Horizontal">
+                                                <TextBlock Text="&#xE10A;" 
+                                                           FontFamily="Segoe MDL2 Assets" 
+                                                           Foreground="IndianRed"
+                                                           Margin="0,4,5,0"/>
+                                                <TextBlock Text="移除" FontFamily="微软雅黑" FontSize="16"/>
+                                            </StackPanel>
+                                        </Button.Content>
+                                    </Button>
 
                                 </StackPanel>
                                 <ListView ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
+                                          Name="PlayingListView"
                                           IsItemClickEnabled="False"
+                                          DoubleTapped="ListView_DoubleTapped"
+                                          Tapped="ListView_Tapped"
                                           ItemsSource="{x:Bind PlayingSongsList}"
                                           VerticalAlignment="Stretch"
                                           HorizontalAlignment="Stretch"
@@ -297,7 +317,7 @@
                                           Grid.Row="1">
                                     <ListView.ItemTemplate>
                                         <DataTemplate x:DataType="vm:Song">
-                                            <Grid HorizontalAlignment="Stretch" Height="40" MinWidth="450">
+                                            <Grid HorizontalAlignment="Stretch" Height="40" MinWidth="450" DoubleTapped="Grid_DoubleTapped">
                                                 <Grid.ColumnDefinitions>
                                                     <ColumnDefinition Width="30"/>
                                                     <ColumnDefinition Width="2.5*" MinWidth="100" />
@@ -311,16 +331,37 @@
                                                            Style="{StaticResource MusicListKeyInfoTextStyle}"
                                                            Foreground="{x:Bind IsFavorite, Mode=OneWay, Converter={StaticResource FavBtnForegroundConverter}}"
                                                            FontFamily="Segoe MDL2 Assets"/>
-                                                <TextBlock Grid.Column="1"
-                                                           Text="{x:Bind Title , Mode=OneWay}"
-                                                           Style="{StaticResource MusicListKeyInfoTextStyle}"/>
+                                                <RelativePanel Margin="0" 
+                                                               Padding="0"
+                                                               Grid.Column="1"
+                                                               VerticalAlignment="Stretch">
+                                                    <TextBlock RelativePanel.AlignLeftWithPanel="True"
+                                                               Text="{x:Bind Title}"
+                                                               Style="{StaticResource MusicListKeyInfoTextStyle}"
+                                                               RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                               DoubleTapped="TextBlock_DoubleTapped"/>
+                                                    <Button RelativePanel.AlignRightWithPanel="True"
+                                                            RelativePanel.AlignVerticalCenterWithPanel="True"
+                                                            Name="PlayingListPlayBtn"
+                                                            Visibility="Collapsed"
+                                                            Content="&#xE102;"
+                                                            Background="Transparent"
+                                                            Style="{StaticResource AdditonalControlButtonStyle}"
+                                                            ToolTipService.ToolTip="播放歌曲"
+                                                            Tapped="PlayingListPlayBtn_Tapped"
+                                                            IsDoubleTapEnabled="False"/>
+                                                </RelativePanel>
                                                 <TextBlock Grid.Column="3"
                                                            Text="{x:Bind Artist , Mode=OneWay}"
                                                            Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                                           DoubleTapped="TextBlock_DoubleTapped"
+                                                           TextTrimming="CharacterEllipsis"
                                                            x:Phase="1"/>
                                                 <TextBlock Grid.Column="5"
                                                            Text="{x:Bind Duration , Mode=OneWay , Converter={StaticResource TimeSpanConverter}}"
                                                            Style="{StaticResource MusicListDetailInfoTextStyle}"
+                                                           TextTrimming="CharacterEllipsis"
+                                                           DoubleTapped="TextBlock_DoubleTapped"
                                                            x:Phase="1"/>
                                             </Grid>
                                         </DataTemplate>

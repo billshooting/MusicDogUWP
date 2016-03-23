@@ -41,7 +41,7 @@ namespace MusicUWP.ViewPage
                 OnPropertyChanged();
             }
         }
-        public ObservableCollection<LocalSong> DownloadedSongs { get; set; }
+        public ObservableCollection<Song> DownloadedSongs { get; set; }
         public DownloadPage()
         {
             this.InitializeComponent();
@@ -74,7 +74,7 @@ namespace MusicUWP.ViewPage
 
         private async void DownloadListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (LocalSong)((ListViewItemPresenter)e.OriginalSource).Content;
+            var song = (Song)((ListViewItemPresenter)e.OriginalSource).Content;
             e.Handled = true;
 
             await mainPage.OpenLocalSongAsync(song);
@@ -109,14 +109,14 @@ namespace MusicUWP.ViewPage
 
         private async void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (LocalSong)((Grid)sender).DataContext;
+            var song = (Song)((Grid)sender).DataContext;
             e.Handled = true;
             await mainPage.OpenLocalSongAsync(song);
         }
 
         private void TextBlock_PointerPressed(object sender, PointerRoutedEventArgs e)
         {
-            LocalSong song = (LocalSong)((TextBlock)sender).DataContext;
+            Song song = (Song)((TextBlock)sender).DataContext;
             e.Handled = true;
             if (song.IsFavorite)
                 mainPage.UnFavorite(song);
@@ -126,7 +126,7 @@ namespace MusicUWP.ViewPage
 
         private async void TextBlock_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (LocalSong)((TextBlock)sender).DataContext;
+            var song = (Song)((TextBlock)sender).DataContext;
             e.Handled = true;
             await mainPage.OpenLocalSongAsync(song);
         }
@@ -134,21 +134,21 @@ namespace MusicUWP.ViewPage
         private async void PlayMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (MenuFlyoutItem)(sender);
-            LocalSong song = (LocalSong)item.DataContext;
+            Song song = (Song)item.DataContext;
             await mainPage.OpenLocalSongAsync(song);
         }
 
         private void FavMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (MenuFlyoutItem)(sender);
-            LocalSong song = (LocalSong)item.DataContext;
+            Song song = (Song)item.DataContext;
             mainPage.Favorite(song);
         }
 
         private void AddPlayListMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (MenuFlyoutItem)(sender);
-            LocalSong song = (LocalSong)item.DataContext;
+            Song song = (Song)item.DataContext;
             mainPage.AddToPlayingList(song);
         }
     }

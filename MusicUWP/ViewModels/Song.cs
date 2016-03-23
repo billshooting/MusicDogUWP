@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using Windows.Storage;
 using Windows.UI.Xaml.Media.Imaging;
 
+
 namespace MusicUWP.ViewModels
 {
     public class Song : INotifyPropertyChanged
@@ -18,9 +19,30 @@ namespace MusicUWP.ViewModels
         private string _album;
         
         private TimeSpan _duration;
-        private BitmapImage _alblmCover;
+        private string _alblmCoverUrl;
         private bool _isFavorite;
         private bool _isPlaying;
+
+        private string _songFile;
+
+
+        public int Albumid { get; set; }
+        public string Albummid { get; set; }
+        public string Albumpic_big { get; set; }
+        public string Albumpic_small { get; set; }
+        public string DownUrl { get; set; }
+        public int Singerid { get; set; }
+        public int Songid { get; set; }
+        public string Url { get; set; }
+        public string SongFile
+        {
+            get { return _songFile; }
+            set
+            {
+                _songFile = value;
+                OnPropertyChanged();
+            }
+        }
 
         //   需要展示的属性
         public int Id
@@ -99,12 +121,12 @@ namespace MusicUWP.ViewModels
 
         public bool IsLoaclSong { get; set; }
 
-        public BitmapImage AlbumCover
+        public string AlbumCoverUrl
         {
-            get { return _alblmCover; }
+            get { return _alblmCoverUrl; }
             set
             {
-                _alblmCover = value;
+                _alblmCoverUrl = value;
                 if (PropertyChanged != null)
                     PropertyChanged(this, new PropertyChangedEventArgs("AlbumCover"));
             }

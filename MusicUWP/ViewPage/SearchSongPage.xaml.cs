@@ -27,7 +27,7 @@ namespace MusicUWP.ViewPage
     /// </summary>
     public sealed partial class SearchSongPage : Page
     {
-        public ObservableCollection<WebSong> QueryList { get; set; } = new ObservableCollection<WebSong>();
+        public ObservableCollection<Song> QueryList { get; set; } = new ObservableCollection<Song>();
 
         private SongResponseByName WebReqResult;
         private string queryWord;
@@ -126,7 +126,7 @@ namespace MusicUWP.ViewPage
 
         private void ListView_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (WebSong)((ListViewItemPresenter)e.OriginalSource).Content;
+            var song = (Song)((ListViewItemPresenter)e.OriginalSource).Content;
             e.Handled = true;
 
             mainPage.OpenWebSong(song);
@@ -134,14 +134,14 @@ namespace MusicUWP.ViewPage
 
         private void Grid_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (WebSong)((Grid)sender).DataContext;
+            var song = (Song)((Grid)sender).DataContext;
             e.Handled = true;
             mainPage.OpenWebSong(song);
         }
 
         private void TextBlock_DoubleTapped(object sender, DoubleTappedRoutedEventArgs e)
         {
-            var song = (WebSong)((TextBlock)sender).DataContext;
+            var song = (Song)((TextBlock)sender).DataContext;
             e.Handled = true;
             mainPage.OpenWebSong(song);
         }
@@ -159,7 +159,7 @@ namespace MusicUWP.ViewPage
         private void PlayMenu_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (MenuFlyoutItem)(sender);
-            WebSong song = (WebSong)item.DataContext;
+            Song song = (Song)item.DataContext;
             mainPage.OpenWebSong(song);
         }
 
@@ -180,7 +180,7 @@ namespace MusicUWP.ViewPage
         private async void Download_Click(object sender, RoutedEventArgs e)
         {
             MenuFlyoutItem item = (MenuFlyoutItem)(sender);
-            WebSong song = (WebSong)item.DataContext;
+            Song song = (Song)item.DataContext;
             string url = song.DownUrl;
             string title = song.Title;
             await mainPage.HandleDownload(title, url);

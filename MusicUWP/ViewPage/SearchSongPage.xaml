@@ -34,7 +34,7 @@
                   ItemContainerStyle="{StaticResource ListViewBackGroundStyle}"
                   Grid.Row="1">
             <ListView.ItemTemplate >
-                <DataTemplate x:DataType="vm:WebSong">
+                <DataTemplate x:DataType="vm:Song">
                     <Grid HorizontalAlignment="Stretch" Height="40" Width="Auto" DoubleTapped="Grid_DoubleTapped">
                         <Grid.ColumnDefinitions>
                             <ColumnDefinition Width="30" />

@@ -1,0 +1,3 @@
+"/t:MusicUWP.Models.SongResponseBandList,MusicUWP,json"
+"/t:MusicUWP.Models.SongResponseByName,MusicUWP,json"
+"/t:MusicUWP.Models.SongResponseById,MusicUWP,json"
